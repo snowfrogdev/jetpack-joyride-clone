@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=10 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://p77k43vlst7u" path="res://assets/floor_placeholder.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://d2qomq7us42pn" path="res://parallax_background.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://duyutkpobsta6" path="res://assets/player_placeholder.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://byy6m7tdp55ys" path="res://player.gd" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bofack50w2ncn" path="res://sun_core_relays.tscn" id="6_7mycd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
 radius = 41.0
@@ -60,3 +61,23 @@ shape = SubResource("RectangleShape2D_1bvp3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CeilingCollider"]
 position = Vector2(1477.5, 20)
 shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="SunCoreRelays" parent="." instance=ExtResource("6_7mycd")]
+position = Vector2(904, 398)
+beam_width = 16.0
+
+[node name="Beam" parent="SunCoreRelays" index="0"]
+points = PackedVector2Array(62, 54, -62, -54)
+width = 16.0
+
+[node name="StartNode" parent="SunCoreRelays" index="1"]
+position = Vector2(62, 54)
+
+[node name="EndNode" parent="SunCoreRelays" index="2"]
+position = Vector2(-62, -54)
+
+[node name="CollisionShape2D" parent="SunCoreRelays/Collider" index="0"]
+rotation = -2.42505
+scale = Vector2(1, 1)
+
+[editable path="SunCoreRelays"]
