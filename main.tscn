@@ -1,11 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=9 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://p77k43vlst7u" path="res://assets/floor_placeholder.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://d2qomq7us42pn" path="res://parallax_background.gd" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://duyutkpobsta6" path="res://assets/player_placeholder.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://byy6m7tdp55ys" path="res://player.gd" id="4_lquwl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
+radius = 41.0
+height = 82.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(3248, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(3263, 60)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
+metadata/_edit_horizontal_guides_ = [50.0, 680.0]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_h2yge")
@@ -17,3 +30,33 @@ motion_mirroring = Vector2(2560, 0)
 [node name="Floor" type="Sprite2D" parent="ParallaxBackground/ForegroundLayer"]
 position = Vector2(1280, 360)
 texture = ExtResource("2_0xm2m")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(300, 627)
+script = ExtResource("4_lquwl")
+gravity = 900.0
+boost_force = 2000.0
+max_ascend_speed = 500.0
+max_fall_speed = 500.0
+damping = 0.9
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("4_1bvp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(1, 1.28)
+shape = SubResource("CapsuleShape2D_lquwl")
+
+[node name="FloorCollider" type="StaticBody2D" parent="."]
+position = Vector2(0, 680)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollider"]
+position = Vector2(1481, 23.5)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="CeilingCollider" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CeilingCollider"]
+position = Vector2(1477.5, 20)
+shape = SubResource("RectangleShape2D_lquwl")
