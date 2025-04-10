@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=11 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://p77k43vlst7u" path="res://assets/floor_placeholder.png" id="2_0xm2m"]
@@ -10,6 +10,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
 radius = 41.0
 height = 82.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7mycd"]
+radius = 39.0
+height = 102.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(3248, 47)
@@ -49,6 +53,11 @@ texture = ExtResource("4_1bvp3")
 scale = Vector2(1, 1.28)
 shape = SubResource("CapsuleShape2D_lquwl")
 
+[node name="Hurtbox" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hurtbox"]
+shape = SubResource("CapsuleShape2D_7mycd")
+
 [node name="FloorCollider" type="StaticBody2D" parent="."]
 position = Vector2(0, 680)
 
@@ -63,21 +72,3 @@ position = Vector2(1477.5, 20)
 shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="SunCoreRelays" parent="." instance=ExtResource("6_7mycd")]
-position = Vector2(904, 398)
-beam_width = 16.0
-
-[node name="Beam" parent="SunCoreRelays" index="0"]
-points = PackedVector2Array(62, 54, -62, -54)
-width = 16.0
-
-[node name="StartNode" parent="SunCoreRelays" index="1"]
-position = Vector2(62, 54)
-
-[node name="EndNode" parent="SunCoreRelays" index="2"]
-position = Vector2(-62, -54)
-
-[node name="CollisionShape2D" parent="SunCoreRelays/Collider" index="0"]
-rotation = -2.42505
-scale = Vector2(1, 1)
-
-[editable path="SunCoreRelays"]

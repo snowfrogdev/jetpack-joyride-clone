@@ -22,6 +22,10 @@ window/size/viewport_height=720
 window/size/initial_position_type=3
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+hazard="Anything that will kill the player on contact"
+
 [input]
 
 Boost={
