@@ -9,6 +9,11 @@ class_name SunCoreRelays extends Node2D
 @onready var beam_collider := $Collider
 @onready var beam_collision_shape := $Collider/CollisionShape2D
 
+func _ready():
+  # Duplicate the shape so it’s unique to this instance
+  if beam_collision_shape.shape:
+      beam_collision_shape.shape = beam_collision_shape.shape.duplicate()
+
 func _process(_delta):
   if Engine.is_editor_hint():
     beam_path.width = beam_width

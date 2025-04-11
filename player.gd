@@ -29,5 +29,9 @@ func _physics_process(delta: float) -> void:
   move_and_slide()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-  if area.is_in_group("hazard"):
-    print("Player hit by hazard!")
+  var current = area
+  while current:
+    if current.is_in_group("hazard"):
+        print("Player hit by hazard!")
+        break
+    current = current.get_parent()

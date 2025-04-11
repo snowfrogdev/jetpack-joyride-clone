@@ -13,13 +13,12 @@ config_version=5
 config/name="Jetpack Joyride Clone"
 run/main_scene="uid://crti1kafjjwkt"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://bq02gs0dub1v8"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/initial_position_type=3
 window/stretch/mode="canvas_items"
 
 [global_group]

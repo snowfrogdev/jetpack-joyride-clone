@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=13 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://p77k43vlst7u" path="res://assets/floor_placeholder.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://d2qomq7us42pn" path="res://parallax_background.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://duyutkpobsta6" path="res://assets/player_placeholder.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://byy6m7tdp55ys" path="res://player.gd" id="4_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bofack50w2ncn" path="res://sun_core_relays.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://csgql76sts8g3" path="res://segments/segment_manager.gd" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://br5us4obed0iq" path="res://segments/segment_data.gd" id="7_5vw27"]
+[ext_resource type="Resource" uid="uid://cp5pxscj5s8by" path="res://segments/segment_01_data.tres" id="8_kek77"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
 radius = 41.0
@@ -27,7 +29,7 @@ metadata/_edit_horizontal_guides_ = [50.0, 680.0]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_h2yge")
-speed = 250.0
+speed = 350.0
 
 [node name="ForegroundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(2560, 0)
@@ -54,6 +56,7 @@ scale = Vector2(1, 1.28)
 shape = SubResource("CapsuleShape2D_lquwl")
 
 [node name="Hurtbox" type="Area2D" parent="Player"]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hurtbox"]
 shape = SubResource("CapsuleShape2D_7mycd")
@@ -71,4 +74,8 @@ shape = SubResource("RectangleShape2D_1bvp3")
 position = Vector2(1477.5, 20)
 shape = SubResource("RectangleShape2D_lquwl")
 
-[node name="SunCoreRelays" parent="." instance=ExtResource("6_7mycd")]
+[node name="SegmentManager" type="Node2D" parent="."]
+script = ExtResource("6_7mycd")
+segments = Array[ExtResource("7_5vw27")]([ExtResource("8_kek77")])
+scroll_speed = 350.0
+metadata/_edit_lock_ = true
