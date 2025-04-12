@@ -2,11 +2,11 @@ extends Node2D
 class_name SegmentManager
 
 @export var segments: Array[SegmentData]
-@export var scroll_speed: float = 200.0 # pixels per second
 @export var viewport_width: float = 1280.0
 @export var spawn_buffer: float = 200.0
 @export var max_active_segments: int = 5
 
+var scroll_speed: float = 0.0
 var _active_segments: Array[Node2D] = []
 var _last_segment_end_x: float = 0.0
 

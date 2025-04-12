@@ -1,10 +1,12 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var gravity: float = 800
 @export var boost_force: float = 1000.0
 @export var max_ascend_speed: float = 200.0
 @export var max_fall_speed: float = 600.0
 @export var damping: float = 0.3
+
+signal died
 
 @onready var hurtbox: Area2D = $Hurtbox
 
@@ -32,6 +34,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
   var current = area
   while current:
     if current.is_in_group("hazard"):
-        print("Player hit by hazard!")
+        died.emit()
         break
     current = current.get_parent()

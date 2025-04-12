@@ -1,11 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=19 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://p77k43vlst7u" path="res://assets/floor_placeholder.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://d2qomq7us42pn" path="res://parallax_background.gd" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://bowpgrus5w04n" path="res://game.gd" id="2_w48qg"]
+[ext_resource type="Script" uid="uid://5t1f8d7k7bp6" path="res://states/state_machine.gd" id="2_ycdy4"]
+[ext_resource type="Script" uid="uid://coaqqywgj3qie" path="res://states/ready.gd" id="3_w48qg"]
 [ext_resource type="Texture2D" uid="uid://duyutkpobsta6" path="res://assets/player_placeholder.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://byy6m7tdp55ys" path="res://player.gd" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://bye1q868xjdnf" path="res://states/running.gd" id="4_vivmo"]
+[ext_resource type="Script" uid="uid://w33lnhyd7ipj" path="res://states/dying.gd" id="5_2cqfq"]
 [ext_resource type="Script" uid="uid://csgql76sts8g3" path="res://segments/segment_manager.gd" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://cglocerhnoy71" path="res://states/game_over.gd" id="6_yaehf"]
 [ext_resource type="Script" uid="uid://br5us4obed0iq" path="res://segments/segment_data.gd" id="7_5vw27"]
 [ext_resource type="Resource" uid="uid://cp5pxscj5s8by" path="res://segments/segment_01_data.tres" id="8_kek77"]
 
@@ -27,18 +33,22 @@ size = Vector2(3263, 60)
 script = ExtResource("1_ig7tw")
 metadata/_edit_horizontal_guides_ = [50.0, 680.0]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("2_h2yge")
-speed = 350.0
+[node name="Game" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_w48qg")
+speed = 500.0
 
-[node name="ForegroundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Game"]
+script = ExtResource("2_h2yge")
+
+[node name="ForegroundLayer" type="ParallaxLayer" parent="Game/ParallaxBackground"]
 motion_mirroring = Vector2(2560, 0)
 
-[node name="Floor" type="Sprite2D" parent="ParallaxBackground/ForegroundLayer"]
+[node name="Floor" type="Sprite2D" parent="Game/ParallaxBackground/ForegroundLayer"]
 position = Vector2(1280, 360)
 texture = ExtResource("2_0xm2m")
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="Game"]
 position = Vector2(300, 627)
 script = ExtResource("4_lquwl")
 gravity = 900.0
@@ -48,34 +58,55 @@ max_fall_speed = 500.0
 damping = 0.9
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="Game/Player"]
 texture = ExtResource("4_1bvp3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Player"]
 scale = Vector2(1, 1.28)
 shape = SubResource("CapsuleShape2D_lquwl")
 
-[node name="Hurtbox" type="Area2D" parent="Player"]
+[node name="Hurtbox" type="Area2D" parent="Game/Player"]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Player/Hurtbox"]
 shape = SubResource("CapsuleShape2D_7mycd")
 
-[node name="FloorCollider" type="StaticBody2D" parent="."]
+[node name="FloorCollider" type="StaticBody2D" parent="Game"]
 position = Vector2(0, 680)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollider"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/FloorCollider"]
 position = Vector2(1481, 23.5)
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="CeilingCollider" type="StaticBody2D" parent="."]
+[node name="CeilingCollider" type="StaticBody2D" parent="Game"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CeilingCollider"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/CeilingCollider"]
 position = Vector2(1477.5, 20)
 shape = SubResource("RectangleShape2D_lquwl")
 
-[node name="SegmentManager" type="Node2D" parent="."]
+[node name="SegmentManager" type="Node2D" parent="Game"]
 script = ExtResource("6_7mycd")
 segments = Array[ExtResource("7_5vw27")]([ExtResource("8_kek77")])
-scroll_speed = 350.0
 metadata/_edit_lock_ = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+process_mode = 3
+script = ExtResource("2_ycdy4")
+initial_state = NodePath("Ready")
+metadata/_custom_type_script = "uid://5t1f8d7k7bp6"
+
+[node name="Ready" type="Node" parent="StateMachine"]
+script = ExtResource("3_w48qg")
+metadata/_custom_type_script = "uid://cue7hc33wov63"
+
+[node name="Running" type="Node" parent="StateMachine"]
+script = ExtResource("4_vivmo")
+metadata/_custom_type_script = "uid://cue7hc33wov63"
+
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("5_2cqfq")
+metadata/_custom_type_script = "uid://cue7hc33wov63"
+
+[node name="GameOver" type="Node" parent="StateMachine"]
+script = ExtResource("6_yaehf")
+metadata/_custom_type_script = "uid://cue7hc33wov63"
