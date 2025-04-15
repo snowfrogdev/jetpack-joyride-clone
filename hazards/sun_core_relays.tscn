@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bp65ekimrswq3" path="res://assets/relay_placeholder.png" id="1_4qw7h"]
 [ext_resource type="Script" uid="uid://bbshymeemmvwh" path="res://hazards/sun_core_relays.gd" id="1_pcxc2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcxc2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tqej"]
 size = Vector2(240, 24)
 
 [node name="SunCoreRelays" type="Node2D" groups=["hazard"]]
@@ -37,5 +37,5 @@ collision_layer = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" groups=["hazard"]]
-shape = SubResource("RectangleShape2D_pcxc2")
+shape = SubResource("RectangleShape2D_4tqej")
 metadata/_edit_lock_ = true

@@ -8,7 +8,7 @@ class_name SegmentManager
 
 var scroll_speed: float = 0.0
 var _active_segments: Array[Node2D] = []
-var _last_segment_end_x: float = 0.0
+var _last_segment_end_x: float
 
 func _ready():
   spawn_initial_segments()
@@ -34,8 +34,8 @@ func get_viewport_left_edge() -> float:
   return 0.0
 
 func spawn_initial_segments():
-  while _last_segment_end_x < get_viewport_right_edge() + spawn_buffer:
-    spawn_next_segment()
+  _last_segment_end_x = get_viewport_right_edge() + spawn_buffer
+  spawn_next_segment()
 
 func spawn_next_segment():
   assert(segments.size() > 0, "No segments available to spawn.")

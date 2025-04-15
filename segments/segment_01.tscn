@@ -18,7 +18,7 @@ metadata/_edit_horizontal_guides_ = [720.0]
 position = Vector2(1504, 354)
 gizmo_extents = 55.0
 
-[node name="SunCoreRelays" parent="." groups=["hazard"] instance=ExtResource("1_odgxk")]
+[node name="SunCoreRelays" parent="." instance=ExtResource("1_odgxk")]
 position = Vector2(235.5, 190.5)
 
 [node name="Beam" parent="SunCoreRelays" index="0"]
@@ -34,7 +34,7 @@ position = Vector2(77.5, 76.5)
 rotation = 0.778905
 shape = SubResource("RectangleShape2D_odgxk")
 
-[node name="SunCoreRelays2" parent="." groups=["hazard"] instance=ExtResource("1_odgxk")]
+[node name="SunCoreRelays2" parent="." instance=ExtResource("1_odgxk")]
 position = Vector2(745, 198)
 
 [node name="Beam" parent="SunCoreRelays2" index="0"]
@@ -50,7 +50,7 @@ position = Vector2(73, -74.5)
 rotation = -0.795567
 shape = SubResource("RectangleShape2D_8xfd5")
 
-[node name="SunCoreRelays3" parent="." groups=["hazard"] instance=ExtResource("1_odgxk")]
+[node name="SunCoreRelays3" parent="." instance=ExtResource("1_odgxk")]
 position = Vector2(1305.5, 557.75)
 
 [node name="Beam" parent="SunCoreRelays3" index="0"]
