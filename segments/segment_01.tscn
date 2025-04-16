@@ -1,71 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://i6vmtuqvh0wg"]
+[gd_scene load_steps=6 format=3 uid="uid://d3nhndo0ehdml"]
 
-[ext_resource type="PackedScene" uid="uid://bofack50w2ncn" path="res://hazards/sun_core_relays.tscn" id="1_odgxk"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_odgxk"]
-size = Vector2(217.793, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xfd5"]
-size = Vector2(208.607, 24)
+[ext_resource type="PackedScene" uid="uid://cypn3paix6woh" path="res://segments/base_segment.tscn" id="1_odgxk"]
+[ext_resource type="PackedScene" uid="uid://bofack50w2ncn" path="res://hazards/sun_core_relays.tscn" id="2_8xfd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1q7se"]
-size = Vector2(208.243, 24)
+size = Vector2(200.251, 24)
 
-[node name="Segment01" type="Node2D"]
-metadata/_edit_horizontal_guides_ = [720.0]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0utlg"]
+size = Vector2(200.251, 24)
 
-[node name="EndMarker" type="Marker2D" parent="."]
-position = Vector2(1504, 354)
-gizmo_extents = 55.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8aq3"]
+size = Vector2(142.125, 24)
 
-[node name="SunCoreRelays" parent="." instance=ExtResource("1_odgxk")]
-position = Vector2(235.5, 190.5)
+[node name="BaseSegment" instance=ExtResource("1_odgxk")]
+
+[node name="EndMarker" parent="." index="0"]
+position = Vector2(4121, 337)
+
+[node name="SunCoreRelays" parent="." index="1"]
+position = Vector2(1402, 293)
 
 [node name="Beam" parent="SunCoreRelays" index="0"]
-points = PackedVector2Array(-77.5, -76.5, 77.5, 76.5)
+points = PackedVector2Array(0.375, 100.125, -0.375, -100.125)
 
 [node name="StartNode" parent="SunCoreRelays" index="1"]
-position = Vector2(-77.5, -76.5)
+position = Vector2(0.375, 100.125)
 
 [node name="EndNode" parent="SunCoreRelays" index="2"]
-position = Vector2(77.5, 76.5)
+position = Vector2(-0.375, -100.125)
 
 [node name="CollisionShape2D" parent="SunCoreRelays/Collider" index="0"]
-rotation = 0.778905
-shape = SubResource("RectangleShape2D_odgxk")
-
-[node name="SunCoreRelays2" parent="." instance=ExtResource("1_odgxk")]
-position = Vector2(745, 198)
-
-[node name="Beam" parent="SunCoreRelays2" index="0"]
-points = PackedVector2Array(-73, 74.5, 73, -74.5)
-
-[node name="StartNode" parent="SunCoreRelays2" index="1"]
-position = Vector2(-73, 74.5)
-
-[node name="EndNode" parent="SunCoreRelays2" index="2"]
-position = Vector2(73, -74.5)
-
-[node name="CollisionShape2D" parent="SunCoreRelays2/Collider" index="0"]
-rotation = -0.795567
-shape = SubResource("RectangleShape2D_8xfd5")
-
-[node name="SunCoreRelays3" parent="." instance=ExtResource("1_odgxk")]
-position = Vector2(1305.5, 557.75)
-
-[node name="Beam" parent="SunCoreRelays3" index="0"]
-points = PackedVector2Array(-73.5, 73.75, 73.5, -73.75)
-
-[node name="StartNode" parent="SunCoreRelays3" index="1"]
-position = Vector2(-73.5, 73.75)
-
-[node name="EndNode" parent="SunCoreRelays3" index="2"]
-position = Vector2(73.5, -73.75)
-
-[node name="CollisionShape2D" parent="SunCoreRelays3/Collider" index="0"]
-rotation = -0.787096
+rotation = -1.57454
 shape = SubResource("RectangleShape2D_1q7se")
 
+[node name="SunCoreRelays3" parent="." index="2" instance=ExtResource("2_8xfd5")]
+position = Vector2(3356, 567)
+
+[node name="Beam" parent="SunCoreRelays3" index="0"]
+points = PackedVector2Array(0.375, 100.125, -0.375, -100.125)
+
+[node name="StartNode" parent="SunCoreRelays3" index="1"]
+position = Vector2(0.375, 100.125)
+
+[node name="EndNode" parent="SunCoreRelays3" index="2"]
+position = Vector2(-0.375, -100.125)
+
+[node name="CollisionShape2D" parent="SunCoreRelays3/Collider" index="0"]
+rotation = -1.57454
+shape = SubResource("RectangleShape2D_0utlg")
+
+[node name="SunCoreRelays2" parent="." index="3" instance=ExtResource("2_8xfd5")]
+position = Vector2(2343, 566)
+
+[node name="Beam" parent="SunCoreRelays2" index="0"]
+points = PackedVector2Array(0.1875, 71.0625, -0.1875, -71.0625)
+
+[node name="StartNode" parent="SunCoreRelays2" index="1"]
+position = Vector2(0.1875, 71.0625)
+
+[node name="EndNode" parent="SunCoreRelays2" index="2"]
+position = Vector2(-0.1875, -71.0625)
+
+[node name="CollisionShape2D" parent="SunCoreRelays2/Collider" index="0"]
+rotation = -1.57343
+shape = SubResource("RectangleShape2D_g8aq3")
+
 [editable path="SunCoreRelays"]
-[editable path="SunCoreRelays2"]
 [editable path="SunCoreRelays3"]
+[editable path="SunCoreRelays2"]

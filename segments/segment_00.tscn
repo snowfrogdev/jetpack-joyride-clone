@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://8qxgetyqsglm"]
+
+[ext_resource type="PackedScene" uid="uid://cypn3paix6woh" path="res://segments/base_segment.tscn" id="1_lpegg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpegg"]
+size = Vector2(200.625, 24)
+
+[node name="Segment00" instance=ExtResource("1_lpegg")]
+
+[node name="EndMarker" parent="." index="0"]
+position = Vector2(4779, 344)
+
+[node name="SunCoreRelays" parent="." index="1"]
+position = Vector2(3737.94, 398.313)
+
+[node name="Beam" parent="SunCoreRelays" index="0"]
+points = PackedVector2Array(-0.0625, 100.313, 0.0625, -100.313)
+
+[node name="StartNode" parent="SunCoreRelays" index="1"]
+position = Vector2(-0.0625, 100.313)
+
+[node name="EndNode" parent="SunCoreRelays" index="2"]
+position = Vector2(0.0625, -100.313)
+
+[node name="CollisionShape2D" parent="SunCoreRelays/Collider" index="0"]
+rotation = -1.57017
+shape = SubResource("RectangleShape2D_lpegg")
+
+[editable path="SunCoreRelays"]

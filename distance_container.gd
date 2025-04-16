@@ -18,7 +18,7 @@ func _on_distance_changed(distance: int) -> void:
     current_label.text = "%04dM" % distance
 
 func _on_best_distance_changed(best: int) -> void:
-    best_label.text = "BEST: %05dM" % best
+    best_label.text = "BEST: %04dM" % best
 
 func _on_best_distance_surpassed() -> void:
     best_label.text = "NEW BEST!"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=23 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://p77k43vlst7u" path="res://assets/floor_placeholder.png" id="2_0xm2m"]
@@ -13,7 +13,8 @@
 [ext_resource type="Script" uid="uid://csgql76sts8g3" path="res://segments/segment_manager.gd" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://cglocerhnoy71" path="res://states/game_over.gd" id="6_yaehf"]
 [ext_resource type="Script" uid="uid://br5us4obed0iq" path="res://segments/segment_data.gd" id="7_5vw27"]
-[ext_resource type="Resource" uid="uid://cp5pxscj5s8by" path="res://segments/segment_01_data.tres" id="8_kek77"]
+[ext_resource type="Resource" uid="uid://cp5pxscj5s8by" path="res://segments/segment_00_data.tres" id="8_kek77"]
+[ext_resource type="Resource" uid="uid://dbvvugvcvpset" path="res://segments/segment_01_data.tres" id="10_2cqfq"]
 [ext_resource type="Script" uid="uid://brtwg7tjkqk4k" path="res://distance_container.gd" id="15_vivmo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
@@ -91,7 +92,7 @@ shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="SegmentManager" type="Node2D" parent="Game"]
 script = ExtResource("6_7mycd")
-segments = Array[ExtResource("7_5vw27")]([ExtResource("8_kek77")])
+segments = Array[ExtResource("7_5vw27")]([ExtResource("8_kek77"), ExtResource("10_2cqfq")])
 metadata/_edit_lock_ = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
