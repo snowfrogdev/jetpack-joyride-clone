@@ -1,4 +1,4 @@
 extends PlayerState
 
 func enter(_prev: String, _data: Dictionary = {}):
-  player.animation_player.play("REST")
+  player.state_machine.travel("REST")

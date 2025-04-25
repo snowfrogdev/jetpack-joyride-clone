@@ -11,9 +11,12 @@ signal died
 
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_tree: AnimationTree = $AnimationTree
+var state_machine: AnimationNodeStateMachinePlayback
 
 func _ready() -> void:
   hurtbox.area_entered.connect(_on_hurtbox_area_entered)
+  state_machine = animation_tree["parameters/playback"]
 
 func _physics_process(delta: float) -> void:
   if not is_on_floor():
@@ -42,7 +45,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
     
 func set_running_animation_speed(speed: float) -> void:
   running_animation_speed = speed / 250
+  restart_running_animation()
 
+func restart_running_animation() -> void:
   if animation_player.current_animation == "RUN":
     var current_position = animation_player.current_animation_position
     animation_player.play("RUN", -1, running_animation_speed)

@@ -4,12 +4,8 @@ const RUNNING = "Running"
 const FLYING = "Dying"
 
 var player: Player
-var game: Game
 
 func _ready() -> void:
   player = owner as Player
   await owner.ready
   assert(player != null, "PlayerState must be attached to the Player node.")
-  
-  game = %Game as Game
-  assert(game != null, "Game node is not loaded.")
