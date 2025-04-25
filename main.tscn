@@ -47,7 +47,6 @@ texture = ExtResource("2_0xm2m")
 
 [node name="Player" parent="Game" instance=ExtResource("5_vivmo")]
 position = Vector2(299, 633)
-scale = Vector2(0.465059, 0.465059)
 metadata/_edit_horizontal_guides_ = [52.0]
 
 [node name="FloorCollider" type="StaticBody2D" parent="Game"]
