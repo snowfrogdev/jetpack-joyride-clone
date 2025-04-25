@@ -41,6 +41,7 @@ func set_speed(new_speed: float) -> void:
     speed = new_speed
     $ParallaxBackground.speed = speed
     $SegmentManager.scroll_speed = speed
+    $Player.set_running_animation_speed(speed)
 
 func _set(property: StringName, value) -> bool:
     if property == "speed":

@@ -5,10 +5,12 @@ class_name Player extends CharacterBody2D
 @export var max_ascend_speed: float = 200.0
 @export var max_fall_speed: float = 600.0
 @export var damping: float = 0.3
+var running_animation_speed: float = 1.0
 
 signal died
 
 @onready var hurtbox: Area2D = $Hurtbox
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
   hurtbox.area_entered.connect(_on_hurtbox_area_entered)
@@ -37,3 +39,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
         died.emit()
         break
     current = current.get_parent()
+    
+func set_running_animation_speed(speed: float) -> void:
+  running_animation_speed = speed / 250
+
+  if animation_player.current_animation == "RUN":
+    var current_position = animation_player.current_animation_position
+    animation_player.play("RUN", -1, running_animation_speed)
+    animation_player.seek(current_position, true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cctl48ijb2yup"]
+[gd_scene load_steps=22 format=3 uid="uid://cctl48ijb2yup"]
 
 [ext_resource type="Script" uid="uid://byy6m7tdp55ys" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://e3v8rdwmancp" path="res://assets/player.png" id="2_onrkg"]
@@ -758,21 +758,30 @@ _data = {
 &"RUN": SubResource("Animation_onrkg")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i3pqv"]
+animation = &"RESET"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_onrkg"]
 animation = &"RUN"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i3pqv"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hqtel"]
 switch_mode = 2
 advance_mode = 0
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sweqy"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2hs0m"]
+switch_mode = 1
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sweqy"]
 states/End/position = Vector2(899, 100)
+states/RESET/node = SubResource("AnimationNodeAnimation_i3pqv")
+states/RESET/position = Vector2(275.934, 94)
 states/RUN/node = SubResource("AnimationNodeAnimation_onrkg")
 states/RUN/position = Vector2(507, 94)
-transitions = ["Start", "RUN", SubResource("AnimationNodeStateMachineTransition_i3pqv"), "RUN", "End", SubResource("AnimationNodeStateMachineTransition_hqtel")]
+states/Start/position = Vector2(53, 100)
+transitions = ["RUN", "End", SubResource("AnimationNodeStateMachineTransition_hqtel"), "Start", "RESET", SubResource("AnimationNodeStateMachineTransition_sweqy"), "RESET", "RUN", SubResource("AnimationNodeStateMachineTransition_2hs0m")]
 graph_offset = Vector2(-284.066, -44.5638)
 
 [node name="Player" type="CharacterBody2D"]
@@ -913,7 +922,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="ForearmL" type="Bone2D" parent="Skeleton2D/Torso/ArmL"]
 position = Vector2(23.3438, -0.254525)
 rotation = -1.36208
-scale = Vector2(0.999975, 0.999975)
+scale = Vector2(0.999974, 0.999974)
 rest = Transform2D(1, 0, 0, 1, 23.3438, -0.254525)
 auto_calculate_length_and_angle = false
 length = 34.432
@@ -923,21 +932,21 @@ metadata/_local_pose_override_enabled_ = true
 [node name="LegL" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2(-10.2837, 7.63178)
 rotation = 1.47813
-scale = Vector2(0.999794, 0.999794)
+scale = Vector2(0.999783, 0.999783)
 rest = Transform2D(1, 0, 0, 1, -10.2838, 7.63178)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ShinL" type="Bone2D" parent="Skeleton2D/Torso/LegL"]
 position = Vector2(-29.3439, 8.94074)
 rotation = 0.227851
-scale = Vector2(0.999862, 0.999862)
+scale = Vector2(0.999853, 0.999853)
 rest = Transform2D(1, 0, 0, 1, -29.3438, 8.94087)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="FootL" type="Bone2D" parent="Skeleton2D/Torso/LegL/ShinL"]
 position = Vector2(-36.9761, -1.34293)
 rotation = 0.108496
-scale = Vector2(1.00001, 1.00001)
+scale = Vector2(0.999991, 0.999991)
 rest = Transform2D(1, 0, 0, 1, -36.9756, -1.3429)
 auto_calculate_length_and_angle = false
 length = 22.0
@@ -964,21 +973,21 @@ metadata/_local_pose_override_enabled_ = true
 [node name="LegR" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2(-5.5605, -12.2099)
 rotation = -1.08155
-scale = Vector2(0.999124, 0.999124)
+scale = Vector2(0.998939, 0.998939)
 rest = Transform2D(1, 0, 0, 1, -5.56051, -12.2099)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ShinR" type="Bone2D" parent="Skeleton2D/Torso/LegR"]
 position = Vector2(-32.8681, -4.19549)
 rotation = 0.327931
-scale = Vector2(0.999906, 0.999906)
+scale = Vector2(0.999904, 0.999904)
 rest = Transform2D(1, 0, 0, 1, -32.8694, -4.19575)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="FootR" type="Bone2D" parent="Skeleton2D/Torso/LegR/ShinR"]
 position = Vector2(-35.4319, -16.2969)
 rotation = 0.193224
-scale = Vector2(1.00163, 1.00163)
+scale = Vector2(1.00197, 1.00197)
 rest = Transform2D(1, 0, 0, 1, -35.4319, -16.2967)
 auto_calculate_length_and_angle = false
 length = 16.0
