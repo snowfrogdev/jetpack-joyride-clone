@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://coaqqywgj3qie" path="res://states/ready.gd" id="3_w48qg"]
 [ext_resource type="Script" uid="uid://bye1q868xjdnf" path="res://states/running.gd" id="4_vivmo"]
 [ext_resource type="Script" uid="uid://w33lnhyd7ipj" path="res://states/dying.gd" id="5_2cqfq"]
-[ext_resource type="PackedScene" uid="uid://cctl48ijb2yup" path="res://player.tscn" id="5_vivmo"]
+[ext_resource type="PackedScene" uid="uid://cctl48ijb2yup" path="res://player/player.tscn" id="5_vivmo"]
 [ext_resource type="Script" uid="uid://csgql76sts8g3" path="res://segments/segment_manager.gd" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://cglocerhnoy71" path="res://states/game_over.gd" id="6_yaehf"]
 [ext_resource type="Script" uid="uid://br5us4obed0iq" path="res://segments/segment_data.gd" id="7_5vw27"]
