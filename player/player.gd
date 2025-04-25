@@ -5,18 +5,18 @@ class_name Player extends CharacterBody2D
 @export var max_ascend_speed: float = 200.0
 @export var max_fall_speed: float = 600.0
 @export var damping: float = 0.3
-var running_animation_speed: float = 1.0
+var run_animation_speed: float = 1.0
 
 signal died
 
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
-var state_machine: AnimationNodeStateMachinePlayback
+var anim_state_machine: AnimationNodeStateMachinePlayback
 
 func _ready() -> void:
   hurtbox.area_entered.connect(_on_hurtbox_area_entered)
-  state_machine = animation_tree["parameters/playback"]
+  anim_state_machine = animation_tree["parameters/StateMachine/playback"]
 
 func _physics_process(delta: float) -> void:
   if not is_on_floor():
@@ -43,12 +43,5 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
         break
     current = current.get_parent()
     
-func set_running_animation_speed(speed: float) -> void:
-  running_animation_speed = speed / 250
-  restart_running_animation()
-
-func restart_running_animation() -> void:
-  if animation_player.current_animation == "RUN":
-    var current_position = animation_player.current_animation_position
-    animation_player.play("RUN", -1, running_animation_speed)
-    animation_player.seek(current_position, true)
+func set_run_animation_speed(speed: float) -> void:
+  run_animation_speed = speed / 200.0
