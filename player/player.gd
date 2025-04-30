@@ -44,4 +44,4 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
     current = current.get_parent()
     
 func set_run_animation_speed(speed: float) -> void:
-  run_animation_speed = speed / 200.0
+  run_animation_speed = speed / 150.0
