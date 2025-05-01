@@ -11,6 +11,7 @@ func _init_particles():
 func enter(_prev: String, _data: Dictionary = {}):
   player.animation_tree.set("parameters/TimeScale/scale", 1.0)
   player.anim_state_machine.travel("FLY")
+  player.dying.connect(_on_player_dying)
   
   # Initialize particles when we know player is ready
   _init_particles()
@@ -31,3 +32,8 @@ func exit() -> void:
   # Stop emitting particles
   left_foot_particles.emitting = false
   right_foot_particles.emitting = false
+
+  player.dying.disconnect(_on_player_dying)
+
+func _on_player_dying() -> void:
+  finished.emit(FALLING)

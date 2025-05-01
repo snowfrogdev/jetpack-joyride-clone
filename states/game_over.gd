@@ -4,6 +4,7 @@ func enter(_prev: String, _data: Dictionary = {}) -> void:
   if OS.has_feature("debug"):
     print("Entering GameOver state")
   
+  get_tree().paused = true
   game.save_best_distance()
 
 func handle_input(event: InputEvent) -> void:

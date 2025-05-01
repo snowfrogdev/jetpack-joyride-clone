@@ -2,6 +2,8 @@ class_name PlayerState extends State
 
 const RUNNING = "Running"
 const FLYING = "Flying"
+const FALLING = "Falling"
+const DEAD = "Dead"
 
 var player: Player
 

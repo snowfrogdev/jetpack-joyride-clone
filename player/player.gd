@@ -7,12 +7,14 @@ class_name Player extends CharacterBody2D
 @export var damping: float = 0.3
 var run_animation_speed: float = 1.0
 
+signal dying
 signal died
 
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 var anim_state_machine: AnimationNodeStateMachinePlayback
+var ignore_hazards: bool = false
 
 func _ready() -> void:
   hurtbox.area_entered.connect(_on_hurtbox_area_entered)
@@ -36,12 +38,20 @@ func _physics_process(delta: float) -> void:
   move_and_slide()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
+  # If we're ignoring hazards, don't process collisions
+  if ignore_hazards:
+    return
+    
   var current = area
   while current:
     if current.is_in_group("hazard"):
-        died.emit()
+        dying.emit()
         break
     current = current.get_parent()
     
 func set_run_animation_speed(speed: float) -> void:
   run_animation_speed = speed / 150.0
+  
+func set_collision_with_hazards(enabled: bool) -> void:
+  # When enabled is false, we ignore hazards
+  ignore_hazards = !enabled

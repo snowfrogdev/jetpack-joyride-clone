@@ -3,7 +3,7 @@ class_name GameState extends State
 const READY = "Ready"
 const RUNNING = "Running"
 const DYING = "Dying"
-const GAMEOVER = "Dead"
+const GAMEOVER = "GameOver"
 
 var main: Main
 var game: Game

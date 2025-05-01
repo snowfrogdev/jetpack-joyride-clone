@@ -2,6 +2,7 @@ class_name Game
 extends Node2D
 
 signal died
+signal dying
 signal distance_changed(distance: int)
 signal best_distance_changed(distance: int)
 signal best_distance_surpassed() # New: emitted mid-run once
@@ -16,8 +17,9 @@ var has_surpassed_best := false # Tracks mid-run surpass
 
 
 func _ready() -> void:
-    $Player.died.connect(_on_player_died)
-    set_speed(speed)
+  $Player.died.connect(_on_player_died)
+  $Player.dying.connect(_on_player_dying)
+  set_speed(speed)
 
 func _process(delta: float) -> void:
     if speed > 0:
@@ -36,6 +38,9 @@ func _process(delta: float) -> void:
 
 func _on_player_died() -> void:
     died.emit()
+
+func _on_player_dying() -> void:
+    dying.emit()
 
 func set_speed(new_speed: float) -> void:
     speed = new_speed
