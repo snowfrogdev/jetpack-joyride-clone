@@ -1,17 +1,21 @@
-[gd_scene load_steps=20 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=24 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://p77k43vlst7u" path="res://assets/floor_placeholder.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://d2qomq7us42pn" path="res://parallax_background.gd" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://bowpgrus5w04n" path="res://game.gd" id="2_w48qg"]
 [ext_resource type="Script" uid="uid://5t1f8d7k7bp6" path="res://states/state_machine.gd" id="2_ycdy4"]
 [ext_resource type="Script" uid="uid://coaqqywgj3qie" path="res://states/ready.gd" id="3_w48qg"]
+[ext_resource type="Texture2D" uid="uid://b32p81ralp0r7" path="res://assets/background_layers/Sky.PNG" id="4_2cqfq"]
 [ext_resource type="Script" uid="uid://bye1q868xjdnf" path="res://states/running.gd" id="4_vivmo"]
 [ext_resource type="Script" uid="uid://w33lnhyd7ipj" path="res://states/dying.gd" id="5_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://cctl48ijb2yup" path="res://player/player.tscn" id="5_vivmo"]
+[ext_resource type="Texture2D" uid="uid://dbiu6l6h34hbv" path="res://assets/background_layers/Far Bacground.PNG" id="5_yaehf"]
 [ext_resource type="Script" uid="uid://csgql76sts8g3" path="res://segments/segment_manager.gd" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cfmgbvyjx4s80" path="res://assets/background_layers/Mid Background.PNG" id="6_074og"]
 [ext_resource type="Script" uid="uid://cglocerhnoy71" path="res://states/game_over.gd" id="6_yaehf"]
 [ext_resource type="Script" uid="uid://br5us4obed0iq" path="res://segments/segment_data.gd" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://c14878t28tviv" path="res://assets/background_layers/Near Background.PNG" id="7_074og"]
+[ext_resource type="Texture2D" uid="uid://blxjbo1bxhnyi" path="res://assets/background_layers/Ground.PNG" id="8_cegan"]
 [ext_resource type="Resource" uid="uid://cp5pxscj5s8by" path="res://segments/segment_00_data.tres" id="8_kek77"]
 [ext_resource type="Resource" uid="uid://dbvvugvcvpset" path="res://segments/segment_01_data.tres" id="10_2cqfq"]
 [ext_resource type="Script" uid="uid://brtwg7tjkqk4k" path="res://distance_container.gd" id="15_vivmo"]
@@ -28,7 +32,7 @@ size = Vector2(3263, 60)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
-metadata/_edit_horizontal_guides_ = [50.0, 680.0]
+metadata/_edit_horizontal_guides_ = [50.0, 697.0]
 
 [node name="Game" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -38,28 +42,60 @@ speed = 500.0
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Game"]
 script = ExtResource("2_h2yge")
 
-[node name="ForegroundLayer" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+[node name="SkyLayer" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+motion_scale = Vector2(0.01, 0.01)
 motion_mirroring = Vector2(2560, 0)
 
-[node name="Floor" type="Sprite2D" parent="Game/ParallaxBackground/ForegroundLayer"]
+[node name="SkySprite" type="Sprite2D" parent="Game/ParallaxBackground/SkyLayer"]
 position = Vector2(1280, 360)
-texture = ExtResource("2_0xm2m")
+texture = ExtResource("4_2cqfq")
+
+[node name="FarBackgroundLayer" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="FarBackgroundSprite" type="Sprite2D" parent="Game/ParallaxBackground/FarBackgroundLayer"]
+position = Vector2(1280, 360)
+texture = ExtResource("5_yaehf")
+
+[node name="MidBackgroundLayer" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="MidBackgroundSprite" type="Sprite2D" parent="Game/ParallaxBackground/MidBackgroundLayer"]
+position = Vector2(1280, 360)
+texture = ExtResource("6_074og")
+
+[node name="NearBackgroundLayer" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="NearBackgroundSprite" type="Sprite2D" parent="Game/ParallaxBackground/NearBackgroundLayer"]
+position = Vector2(1280, 360)
+texture = ExtResource("7_074og")
+
+[node name="GroundLayer" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+motion_mirroring = Vector2(2560, 0)
+
+[node name="GroundSprite" type="Sprite2D" parent="Game/ParallaxBackground/GroundLayer"]
+position = Vector2(1280, 360)
+texture = ExtResource("8_cegan")
 
 [node name="Player" parent="Game" instance=ExtResource("5_vivmo")]
-position = Vector2(299, 633)
+position = Vector2(299, 651)
 metadata/_edit_horizontal_guides_ = [52.0]
 
 [node name="FloorCollider" type="StaticBody2D" parent="Game"]
 position = Vector2(0, 680)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/FloorCollider"]
-position = Vector2(1481, 23.5)
+position = Vector2(1481, 40.5)
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="CeilingCollider" type="StaticBody2D" parent="Game"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/CeilingCollider"]
-position = Vector2(1477.5, 20)
+position = Vector2(1477.5, 0)
 shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="SegmentManager" type="Node2D" parent="Game"]

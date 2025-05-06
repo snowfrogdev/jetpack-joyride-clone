@@ -5,7 +5,7 @@ func enter(_prev: String, _data: Dictionary = {}):
   player.anim_state_machine.travel("RUN")
   player.dying.connect(_on_player_dying)
 
-func _exit_tree() -> void:
+func exit() -> void:
   player.dying.disconnect(_on_player_dying)
 
 func physics_update(_delta: float) -> void:

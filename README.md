@@ -9,12 +9,12 @@ This project is a clone of the classic **Jetpack Joyride** game, created as part
 - [x] Add obstacles that move from right to left. Feel free to make more than one type of obstacle.
   - [x] Obstacles can be placed in the world using a script so the level can be truly endless.
   - [x] Obstacles should either be deleted or recycled when they leave the screen.
-- [] The score increases with distance. The goal is to beat your previous score, so the high score should be displayed alongside the current score.
+- [x] The score increases with distance. The goal is to beat your previous score, so the high score should be displayed alongside the current score.
 
 ### Stretch Goals
 
 - [] The jetpack is a machine gun! Add bullet objects that spew from your character when the input is held.
-  - [] Particle effects are a fun way to add game juice. Mess around with some here, making explosions or sparks when things get destroyed!
+  - [x] Particle effects are a fun way to add game juice. Mess around with some here, making explosions or sparks when things get destroyed!
 
 ### Super Stretch Goals
 

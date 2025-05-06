@@ -50,7 +50,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
     current = current.get_parent()
     
 func set_run_animation_speed(speed: float) -> void:
-  run_animation_speed = speed / 150.0
+  run_animation_speed = speed / 100.0
   
 func set_collision_with_hazards(enabled: bool) -> void:
   # When enabled is false, we ignore hazards
