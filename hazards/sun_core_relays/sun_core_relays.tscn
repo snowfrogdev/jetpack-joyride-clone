@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bofack50w2ncn"]
 
-[ext_resource type="Script" uid="uid://bbshymeemmvwh" path="res://hazards/sun_core_relays.gd" id="1_pcxc2"]
+[ext_resource type="Script" uid="uid://bbshymeemmvwh" path="res://hazards/sun_core_relays/sun_core_relays.gd" id="1_pcxc2"]
 [ext_resource type="Texture2D" uid="uid://bgxaicew036cs" path="res://assets/suncore_relay.png" id="2_4tqej"]
-[ext_resource type="Shader" uid="uid://dhjauhskmx7c0" path="res://hazards/sun_core_beam.gdshader" id="2_h3245"]
-[ext_resource type="Shader" uid="uid://cigbbue3j7u24" path="res://hazards/sun_core_relays.gdshader" id="3_vgy54"]
+[ext_resource type="Shader" uid="uid://dhjauhskmx7c0" path="res://hazards/sun_core_relays/sun_core_beam.gdshader" id="2_h3245"]
+[ext_resource type="Shader" uid="uid://cigbbue3j7u24" path="res://hazards/sun_core_relays/sun_core_relays.gdshader" id="3_vgy54"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h3245"]
 shader = ExtResource("2_h3245")
@@ -65,6 +65,7 @@ uv = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
 [node name="StartNode" type="Node2D" parent="."]
 position = Vector2(-120, 0)
 rotation = -1.5708
+scale = Vector2(0.75, 0.75)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StartNode"]
@@ -80,6 +81,7 @@ uv = PackedVector2Array(0.98425, 0.0198125, 0.985452, 0.985168, 0.0155001, 0.981
 [node name="EndNode" type="Node2D" parent="."]
 position = Vector2(120, 0)
 rotation = 1.5708
+scale = Vector2(0.75, 0.75)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="EndNode"]

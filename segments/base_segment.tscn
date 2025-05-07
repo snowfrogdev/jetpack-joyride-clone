@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cypn3paix6woh"]
 
 [ext_resource type="Script" uid="uid://b1nx37lp1nps4" path="res://segments/base_segment.gd" id="1_fktru"]
-[ext_resource type="PackedScene" uid="uid://bofack50w2ncn" path="res://hazards/sun_core_relays.tscn" id="2_5lci2"]
+[ext_resource type="PackedScene" uid="uid://bofack50w2ncn" path="res://hazards/sun_core_relays/sun_core_relays.tscn" id="2_5lci2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpvwc"]
 size = Vector2(208.501, 24)
