@@ -16,10 +16,10 @@ func _ready():
 
 func _process(_delta):
   if Engine.is_editor_hint():
-    beam_path.width = beam_width
     center_self()
   
   update_beam_transform()
+  update_node_rotations()
 
 func center_self():
   if not (start_node and end_node):
@@ -48,14 +48,59 @@ func update_beam_transform():
   var center = start_pos + dir / 2.0
   var angle = dir.angle()
 
-  # Check if the shape is valid before modifying it
+  # Update collision shape
   assert(beam_collision_shape.shape and beam_collision_shape.shape is RectangleShape2D, "Beam shape is not a RectangleShape2D or is invalid.")
   var shape = beam_collision_shape.shape as RectangleShape2D
-  shape.size = Vector2(length, beam_width) # Use the editable beam width
+  shape.size = Vector2(length + 50, beam_width)
   beam_collision_shape.position = center
   beam_collision_shape.rotation = angle
 
-  # Update the beam line points
-  beam_path.clear_points()
-  beam_path.add_point(start_node.position)
-  beam_path.add_point(end_node.position)
+  # Reset the beam's transform so we can work with local coordinates
+  beam_path.scale = Vector2(1, 1) # Reset scale to apply it correctly later
+  beam_path.rotation = 0
+  beam_path.position = Vector2.ZERO
+  
+  # Calculate half width for the beam
+  var half_width = beam_width / 2.0
+  
+  # Create a rectangle aligned with the x-axis
+  var points = PackedVector2Array([
+    Vector2(-length / 2, -half_width), # Top left
+    Vector2(length / 2, -half_width), # Top right
+    Vector2(length / 2, half_width), # Bottom right
+    Vector2(-length / 2, half_width) # Bottom left
+  ])
+  
+  # Set the polygon points
+  beam_path.polygon = points
+  
+  # Position and rotate the beam properly
+  beam_path.position = center
+  beam_path.rotation = angle
+  
+  # Re-apply the vertical scale that was in the original scene
+  beam_path.scale.y = 10.25
+  
+  # Update UVs to maintain proper texture mapping
+  var uvs = PackedVector2Array([
+    Vector2(0, 0), # Top left
+    Vector2(1, 0), # Top right
+    Vector2(1, 1), # Bottom right
+    Vector2(0, 1) # Bottom left
+  ])
+  beam_path.uv = uvs
+
+func update_node_rotations():
+  if not (start_node and end_node):
+    return
+    
+  # Calculate direction vectors
+  var beam_direction = end_node.position - start_node.position
+  
+  # Rotate start node to face toward the end node
+  # The -PI/2 offset is to account for the original sprite orientation
+  start_node.rotation = beam_direction.angle() - PI / 2
+  
+  # Rotate end node to face toward the start node (opposite direction)
+  # The PI/2 offset is to account for the original sprite orientation
+  end_node.rotation = beam_direction.angle() + PI / 2
