@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://y00qqaj737nv"]
+[gd_scene load_steps=12 format=3 uid="uid://y00qqaj737nv"]
 
 [ext_resource type="Script" uid="uid://dyrbm8k303i71" path="res://hazards/sun_lance/sun_lance_attack.gd" id="1_o1883"]
 [ext_resource type="Script" uid="uid://5t1f8d7k7bp6" path="res://states/state_machine.gd" id="2_vsehh"]
@@ -7,10 +7,21 @@
 [ext_resource type="Script" uid="uid://cv1ck1qa6bu1a" path="res://hazards/sun_lance/states/fired.gd" id="5_ktnvf"]
 [ext_resource type="Texture2D" uid="uid://dvm4s34w4nxr5" path="res://assets/sun_lance_warning.png" id="6_ktnvf"]
 [ext_resource type="Texture2D" uid="uid://doahrynyvesg2" path="res://assets/sun_lance_warning_locked.png" id="7_sd48h"]
+[ext_resource type="Shader" uid="uid://cwf60amtfcf37" path="res://hazards/sun_lance/sun_lance.gdshader" id="8_sd48h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8guq"]
+shader = ExtResource("8_sd48h")
+shader_parameter/iResolution = Vector2(160, 64)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ktnvf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sd48h"]
+height = 62.0
 
 [node name="SunLanceAttack" type="Node2D"]
 script = ExtResource("1_o1883")
-tracking_speed = 3.0
+tracking_speed = 1.5
+projectile_speed = 900.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_vsehh")
@@ -39,3 +50,22 @@ visible = false
 texture = ExtResource("7_sd48h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Warning"]
+
+[node name="Projectile" type="Area2D" parent="." groups=["hazard"]]
+visible = false
+position = Vector2(0, 152)
+collision_layer = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="Projectile"]
+material = SubResource("ShaderMaterial_w8guq")
+position = Vector2(42.5, -17)
+rotation = -3.14159
+scale = Vector2(1.53125, 1.53125)
+texture = SubResource("PlaceholderTexture2D_ktnvf")
+polygon = PackedVector2Array(-80, -32, 80, -32, 80, 32, -80, 32)
+uv = PackedVector2Array(0.00773144, 0.0176388, 0.982125, 0.012125, 0.976481, 1.00201, 0.00556231, 0.9965)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
+position = Vector2(-26, -17)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_sd48h")

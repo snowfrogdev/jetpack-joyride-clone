@@ -9,6 +9,5 @@ size = Vector2(1406, 869)
 script = ExtResource("1_smbxt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["sun_lance_trigger"]]
-position = Vector2(2011, 357)
 shape = SubResource("RectangleShape2D_6l6qw")
 debug_color = Color(0.986477, 0, 0.323194, 0.42)
