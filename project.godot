@@ -24,6 +24,7 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 hazard="Anything that will kill the player on contact"
+sun_lance_trigger=""
 
 [input]
 

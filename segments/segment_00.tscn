@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://8qxgetyqsglm"]
+[gd_scene load_steps=4 format=3 uid="uid://8qxgetyqsglm"]
 
 [ext_resource type="PackedScene" uid="uid://cypn3paix6woh" path="res://segments/base_segment.tscn" id="1_lpegg"]
+[ext_resource type="PackedScene" uid="uid://bx11uakdwq3mg" path="res://hazards/sun_lance/sun_lance_trigger_area.tscn" id="2_6l6qw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpegg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs3uv"]
 size = Vector2(250.626, 24)
 
 [node name="Segment00" instance=ExtResource("1_lpegg")]
@@ -27,6 +28,9 @@ rotation = 0.000623063
 
 [node name="CollisionShape2D" parent="SunCoreRelays/Collider" index="0"]
 rotation = -1.57017
-shape = SubResource("RectangleShape2D_lpegg")
+shape = SubResource("RectangleShape2D_gs3uv")
+
+[node name="SunLanceTriggerArea" parent="." index="2" instance=ExtResource("2_6l6qw")]
 
 [editable path="SunCoreRelays"]
+[editable path="SunLanceTriggerArea"]

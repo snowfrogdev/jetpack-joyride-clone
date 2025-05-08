@@ -8,7 +8,6 @@ class_name Player extends CharacterBody2D
 var run_animation_speed: float = 1.0
 
 signal dying
-signal died
 
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx11uakdwq3mg"]
+
+[ext_resource type="Script" uid="uid://bsiqjigvd72u4" path="res://hazards/sun_lance/sun_lance_trigger.gd" id="1_smbxt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l6qw"]
+size = Vector2(1406, 869)
+
+[node name="SunLanceTriggerArea" type="Area2D"]
+script = ExtResource("1_smbxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["sun_lance_trigger"]]
+position = Vector2(2011, 357)
+shape = SubResource("RectangleShape2D_6l6qw")
+debug_color = Color(0.986477, 0, 0.323194, 0.42)

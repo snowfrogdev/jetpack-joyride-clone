@@ -48,12 +48,13 @@ shader_parameter/noise_scale = Vector2(1, 1)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_me3o8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_me3o8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4faw"]
 size = Vector2(290, 24)
 
 [node name="SunCoreRelays" type="Node2D" groups=["hazard"]]
 script = ExtResource("1_pcxc2")
 beam_width = 24.0
+metadata/_edit_lock_ = true
 
 [node name="Beam" type="Polygon2D" parent="."]
 material = SubResource("ShaderMaterial_h3245")
@@ -61,6 +62,7 @@ scale = Vector2(1, 10.25)
 texture = SubResource("PlaceholderTexture2D_h3245")
 polygon = PackedVector2Array(-120, -12, 120, -12, 120, 12, -120, 12)
 uv = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="StartNode" type="Node2D" parent="."]
 position = Vector2(-120, 0)
@@ -70,6 +72,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StartNode"]
 texture = ExtResource("2_4tqej")
+metadata/_edit_lock_ = true
 
 [node name="Beams" type="Polygon2D" parent="StartNode"]
 material = SubResource("ShaderMaterial_vgy54")
@@ -77,6 +80,7 @@ position = Vector2(-1, -2)
 texture = SubResource("PlaceholderTexture2D_me3o8")
 polygon = PackedVector2Array(64, -64, 64, 64, -64, 64, -64, -64)
 uv = PackedVector2Array(0.98425, 0.0198125, 0.985452, 0.985168, 0.0155001, 0.98175, 0.0167022, 0.016418)
+metadata/_edit_lock_ = true
 
 [node name="EndNode" type="Node2D" parent="."]
 position = Vector2(120, 0)
@@ -86,6 +90,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="EndNode"]
 texture = ExtResource("2_4tqej")
+metadata/_edit_lock_ = true
 
 [node name="Beams" type="Polygon2D" parent="EndNode"]
 material = SubResource("ShaderMaterial_vgy54")
@@ -93,6 +98,7 @@ position = Vector2(-1, -2)
 texture = SubResource("PlaceholderTexture2D_me3o8")
 polygon = PackedVector2Array(64, -64, 64, 64, -64, 64, -64, -64)
 uv = PackedVector2Array(0.98425, 0.0198125, 0.985452, 0.985168, 0.0155001, 0.98175, 0.0167022, 0.016418)
+metadata/_edit_lock_ = true
 
 [node name="Collider" type="Area2D" parent="."]
 visible = false
@@ -100,5 +106,5 @@ collision_layer = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" groups=["hazard"]]
-shape = SubResource("RectangleShape2D_me3o8")
+shape = SubResource("RectangleShape2D_r4faw")
 metadata/_edit_lock_ = true
