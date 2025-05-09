@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=40 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://d2qomq7us42pn" path="res://parallax_background.gd" id="2_h2yge"]
@@ -19,7 +19,21 @@
 [ext_resource type="Resource" uid="uid://cp5pxscj5s8by" path="res://segments/segment_00_data.tres" id="8_kek77"]
 [ext_resource type="Resource" uid="uid://dbvvugvcvpset" path="res://segments/segment_01_data.tres" id="10_2cqfq"]
 [ext_resource type="Script" uid="uid://ihrjbhp014es" path="res://sun_lance_detection_area.gd" id="14_82xsv"]
+[ext_resource type="Resource" uid="uid://nqve366l0x11" path="res://segments/segment_02_data.tres" id="14_getpj"]
+[ext_resource type="Resource" uid="uid://bdyctoq2b15op" path="res://segments/segment_03_data.tres" id="15_ryguw"]
 [ext_resource type="Script" uid="uid://brtwg7tjkqk4k" path="res://distance_container.gd" id="15_vivmo"]
+[ext_resource type="Resource" uid="uid://dwmj7ithqfxp0" path="res://segments/segment_04_data.tres" id="16_d13ii"]
+[ext_resource type="Resource" uid="uid://dx4g75466jc13" path="res://segments/segment_05_data.tres" id="17_1u8w0"]
+[ext_resource type="Resource" uid="uid://hadydwsj6r8h" path="res://segments/segment_06_data.tres" id="18_0odxb"]
+[ext_resource type="Resource" uid="uid://c81pktiufgw8o" path="res://segments/segment_07_data.tres" id="19_lswn8"]
+[ext_resource type="Resource" uid="uid://cdn6uk2v7igjs" path="res://segments/segment_08_data.tres" id="20_a6jrf"]
+[ext_resource type="Resource" uid="uid://bljst4hgjsmd" path="res://segments/segment_09_data.tres" id="21_xuqvo"]
+[ext_resource type="Resource" uid="uid://dyi06gebis6pt" path="res://segments/segment_10_data.tres" id="22_qsp4k"]
+[ext_resource type="Resource" uid="uid://c1t3ao0ysk077" path="res://segments/segment_11_data.tres" id="23_kq58d"]
+[ext_resource type="Resource" uid="uid://dd7rvrnnxa8l6" path="res://segments/segment_12_data.tres" id="24_seu75"]
+[ext_resource type="Resource" uid="uid://bwkeccu3sstul" path="res://segments/segment_13_data.tres" id="25_htxhm"]
+[ext_resource type="Resource" uid="uid://3kgdrgi4ot46" path="res://segments/segment_14_data.tres" id="26_jq2sk"]
+[ext_resource type="Resource" uid="uid://xkqqd6hl1nqk" path="res://segments/segment_15_data.tres" id="27_4k2k6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(3248, 47)
@@ -105,7 +119,8 @@ shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="SegmentManager" type="Node2D" parent="Game"]
 script = ExtResource("6_7mycd")
-segments = Array[ExtResource("7_5vw27")]([ExtResource("8_kek77"), ExtResource("10_2cqfq")])
+segments = Array[ExtResource("7_5vw27")]([ExtResource("8_kek77"), ExtResource("10_2cqfq"), ExtResource("14_getpj"), ExtResource("15_ryguw"), ExtResource("16_d13ii"), ExtResource("17_1u8w0"), ExtResource("18_0odxb"), ExtResource("19_lswn8"), ExtResource("20_a6jrf"), ExtResource("21_xuqvo"), ExtResource("22_qsp4k"), ExtResource("23_kq58d"), ExtResource("24_seu75"), ExtResource("25_htxhm"), ExtResource("26_jq2sk"), ExtResource("27_4k2k6")])
+initial_segments = Array[ExtResource("7_5vw27")]([ExtResource("27_4k2k6")])
 metadata/_edit_lock_ = true
 
 [node name="SunLanceDetectionArea" type="Area2D" parent="Game"]

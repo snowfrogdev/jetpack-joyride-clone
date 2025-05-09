@@ -2,6 +2,7 @@ extends Node2D
 class_name SegmentManager
 
 @export var segments: Array[SegmentData]
+@export var initial_segments: Array[SegmentData] = []
 @export var viewport_width: float = 1280.0
 @export var spawn_buffer: float = 200.0
 @export var max_active_segments: int = 5
@@ -9,8 +10,10 @@ class_name SegmentManager
 var scroll_speed: float = 0.0
 var _active_segments: Array[Node2D] = []
 var _last_segment_end_x: float
+var _initial_segments_queue: Array[SegmentData] = []
 
 func _ready():
+  _initial_segments_queue = initial_segments.duplicate()
   spawn_initial_segments()
 
 func _process(delta: float):
@@ -40,7 +43,12 @@ func spawn_initial_segments():
 func spawn_next_segment():
   assert(segments.size() > 0, "No segments available to spawn.")
 
-  var segment_data: SegmentData = segments.pick_random()
+  var segment_data: SegmentData
+  if _initial_segments_queue.size() > 0:
+    segment_data = _initial_segments_queue.pop_front()
+  else:
+    segment_data = segments.pick_random()
+    
   var segment_instance = segment_data.segment_scene.instantiate() as Node2D
 
   segment_instance.position = Vector2(_last_segment_end_x, 0.0)

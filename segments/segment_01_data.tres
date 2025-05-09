@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_nxg28")
 segment_scene = ExtResource("2_g28no")
-difficulty = 1.0
+difficulty = 0.1
 metadata/_custom_type_script = "uid://br5us4obed0iq"

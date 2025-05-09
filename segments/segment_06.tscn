@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmotf4maqv1ln"]
+
+[ext_resource type="PackedScene" uid="uid://cypn3paix6woh" path="res://segments/base_segment.tscn" id="1_8qkv0"]
+[ext_resource type="PackedScene" uid="uid://bx11uakdwq3mg" path="res://hazards/sun_lance/sun_lance_trigger_area.tscn" id="2_6g0b4"]
+[ext_resource type="PackedScene" uid="uid://bofack50w2ncn" path="res://hazards/sun_core_relays/sun_core_relays.tscn" id="3_n3ob7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qkv0"]
+size = Vector2(269.009, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g0b4"]
+size = Vector2(269.009, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3ob7"]
+size = Vector2(269.009, 24)
+
+[node name="Segment06" instance=ExtResource("1_8qkv0")]
+
+[node name="EndMarker" parent="." index="0"]
+position = Vector2(4729, 356)
+
+[node name="SunLanceTriggerArea" parent="." index="1" instance=ExtResource("2_6g0b4")]
+position = Vector2(703, 374)
+
+[node name="SunCoreRelays" parent="." index="2" instance=ExtResource("3_n3ob7")]
+position = Vector2(1394, 371)
+
+[node name="Beam" parent="SunCoreRelays" index="0"]
+rotation = -1.56166
+polygon = PackedVector2Array(-109.505, -12, 109.505, -12, 109.505, 12, -109.505, 12)
+
+[node name="StartNode" parent="SunCoreRelays" index="1"]
+position = Vector2(-1, 109.5)
+rotation = -3.13246
+
+[node name="EndNode" parent="SunCoreRelays" index="2"]
+position = Vector2(1, -109.5)
+rotation = 0.00913222
+
+[node name="CollisionShape2D" parent="SunCoreRelays/Collider" index="0"]
+rotation = -1.56166
+shape = SubResource("RectangleShape2D_8qkv0")
+
+[node name="SunCoreRelays2" parent="." index="3" instance=ExtResource("3_n3ob7")]
+position = Vector2(4199, 573)
+
+[node name="Beam" parent="SunCoreRelays2" index="0"]
+rotation = -1.56166
+polygon = PackedVector2Array(-109.505, -12, 109.505, -12, 109.505, 12, -109.505, 12)
+
+[node name="StartNode" parent="SunCoreRelays2" index="1"]
+position = Vector2(-1, 109.5)
+rotation = -3.13246
+
+[node name="EndNode" parent="SunCoreRelays2" index="2"]
+position = Vector2(1, -109.5)
+rotation = 0.00913222
+
+[node name="CollisionShape2D" parent="SunCoreRelays2/Collider" index="0"]
+rotation = -1.56166
+shape = SubResource("RectangleShape2D_6g0b4")
+
+[node name="SunCoreRelays3" parent="." index="4" instance=ExtResource("3_n3ob7")]
+position = Vector2(2799, 142)
+
+[node name="Beam" parent="SunCoreRelays3" index="0"]
+rotation = -1.56166
+polygon = PackedVector2Array(-109.505, -12, 109.505, -12, 109.505, 12, -109.505, 12)
+
+[node name="StartNode" parent="SunCoreRelays3" index="1"]
+position = Vector2(-1, 109.5)
+rotation = -3.13246
+
+[node name="EndNode" parent="SunCoreRelays3" index="2"]
+position = Vector2(1, -109.5)
+rotation = 0.00913222
+
+[node name="CollisionShape2D" parent="SunCoreRelays3/Collider" index="0"]
+rotation = -1.56166
+shape = SubResource("RectangleShape2D_n3ob7")
+
+[node name="SunLanceTriggerArea2" parent="." index="5" instance=ExtResource("2_6g0b4")]
+position = Vector2(2109, 374)
+
+[node name="SunLanceTriggerArea3" parent="." index="6" instance=ExtResource("2_6g0b4")]
+position = Vector2(3515, 374)
+
+[editable path="SunCoreRelays"]
+[editable path="SunCoreRelays2"]
+[editable path="SunCoreRelays3"]

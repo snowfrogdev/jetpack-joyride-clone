@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsli4rm1is17n"]
+
+[ext_resource type="PackedScene" uid="uid://cypn3paix6woh" path="res://segments/base_segment.tscn" id="1_3bgg0"]
+[ext_resource type="PackedScene" uid="uid://bx11uakdwq3mg" path="res://hazards/sun_lance/sun_lance_trigger_area.tscn" id="2_olnma"]
+
+[node name="Segment05" instance=ExtResource("1_3bgg0")]
+
+[node name="EndMarker" parent="." index="0"]
+position = Vector2(3175, 327)
+
+[node name="SunLanceTriggerArea" parent="." index="1" instance=ExtResource("2_olnma")]
+position = Vector2(706, 353)
+
+[node name="SunLanceTriggerArea2" parent="." index="2" instance=ExtResource("2_olnma")]
+position = Vector2(933, 351)

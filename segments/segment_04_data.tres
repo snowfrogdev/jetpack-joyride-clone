@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SegmentData" load_steps=3 format=3 uid="uid://dwmj7ithqfxp0"]
+
+[ext_resource type="Script" uid="uid://br5us4obed0iq" path="res://segments/segment_data.gd" id="1_cubw3"]
+[ext_resource type="PackedScene" uid="uid://dicpl35wu0pt3" path="res://segments/segment_04.tscn" id="2_37krn"]
+
+[resource]
+script = ExtResource("1_cubw3")
+segment_scene = ExtResource("2_37krn")
+difficulty = 0.2
+metadata/_custom_type_script = "uid://br5us4obed0iq"

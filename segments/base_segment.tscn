@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cypn3paix6woh"]
+[gd_scene load_steps=2 format=3 uid="uid://cypn3paix6woh"]
 
 [ext_resource type="Script" uid="uid://b1nx37lp1nps4" path="res://segments/base_segment.gd" id="1_fktru"]
-[ext_resource type="PackedScene" uid="uid://bofack50w2ncn" path="res://hazards/sun_core_relays/sun_core_relays.tscn" id="2_5lci2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpvwc"]
-size = Vector2(208.501, 24)
 
 [node name="BaseSegment" type="Node2D"]
 script = ExtResource("1_fktru")
@@ -13,21 +9,3 @@ metadata/_edit_horizontal_guides_ = [720.0]
 [node name="EndMarker" type="Marker2D" parent="."]
 position = Vector2(1280, 325)
 gizmo_extents = 55.0
-
-[node name="SunCoreRelays" parent="." instance=ExtResource("2_5lci2")]
-position = Vector2(1043.75, 389.25)
-
-[node name="Beam" parent="SunCoreRelays" index="0"]
-points = PackedVector2Array(-0.25, 104.25, 0.25, -104.25)
-
-[node name="StartNode" parent="SunCoreRelays" index="1"]
-position = Vector2(-0.25, 104.25)
-
-[node name="EndNode" parent="SunCoreRelays" index="2"]
-position = Vector2(0.25, -104.25)
-
-[node name="CollisionShape2D" parent="SunCoreRelays/Collider" index="0"]
-rotation = -1.5684
-shape = SubResource("RectangleShape2D_jpvwc")
-
-[editable path="SunCoreRelays"]
