@@ -6,13 +6,16 @@ class_name SegmentManager
 @export var viewport_width: float = 1280.0
 @export var spawn_buffer: float = 200.0
 @export var max_active_segments: int = 5
+@export var debug_mode: bool = false
 
 var scroll_speed: float = 0.0
 var _active_segments: Array[Node2D] = []
+var _active_segment_data: Array[SegmentData] = []
 var _last_segment_end_x: float
 var _initial_segments_queue: Array[SegmentData] = []
 
 func _ready():
+  add_to_group("segment_manager")
   _initial_segments_queue = initial_segments.duplicate()
   spawn_initial_segments()
 
@@ -54,6 +57,7 @@ func spawn_next_segment():
   segment_instance.position = Vector2(_last_segment_end_x, 0.0)
   add_child(segment_instance)
   _active_segments.append(segment_instance)
+  _active_segment_data.append(segment_data)
 
   _last_segment_end_x += get_segment_length(segment_instance)
 
@@ -69,5 +73,48 @@ func cleanup_old_segments():
     if right_edge < get_viewport_left_edge() - spawn_buffer:
       first.queue_free()
       _active_segments.pop_front()
+      _active_segment_data.pop_front()
     else:
       break
+
+# Returns an array of dictionaries with information about segments currently visible in the viewport
+func get_segments_in_viewport() -> Array:
+  var viewport_left = get_viewport_left_edge()
+  var viewport_right = get_viewport_right_edge()
+  var segments_info = []
+  
+  for i in range(_active_segments.size()):
+    var segment = _active_segments[i]
+    var data = _active_segment_data[i]
+    var segment_left = segment.position.x
+    var segment_right = segment_left + get_segment_length(segment)
+    
+    # Check if segment is at least partially visible in viewport
+    if segment_right > viewport_left and segment_left < viewport_right:
+      var percent_visible = calculate_percent_visible(segment_left, segment_right, viewport_left, viewport_right)
+      
+      segments_info.append({
+        "name": data.get_segment_name(),
+        "difficulty": data.difficulty,
+        "percent_visible": percent_visible,
+        "position": segment.position
+      })
+  
+  return segments_info
+
+# Calculate what percentage of the segment is visible in the viewport
+func calculate_percent_visible(segment_left: float, segment_right: float, viewport_left: float, viewport_right: float) -> float:
+  var segment_length = segment_right - segment_left
+  var overlap_left = max(segment_left, viewport_left)
+  var overlap_right = min(segment_right, viewport_right)
+  var overlap_length = max(0, overlap_right - overlap_left)
+  
+  return overlap_length / segment_length * 100.0
+
+# Fallback to get a name from the resource if no explicit name is set
+func get_segment_resource_name(index: int) -> String:
+  var resource_path = _active_segment_data[index].resource_path
+  if resource_path:
+    var file_name = resource_path.get_file().get_basename()
+    return file_name
+  return "Segment " + str(index)

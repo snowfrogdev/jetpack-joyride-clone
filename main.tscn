@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=41 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://d2qomq7us42pn" path="res://parallax_background.gd" id="2_h2yge"]
@@ -34,6 +34,7 @@
 [ext_resource type="Resource" uid="uid://bwkeccu3sstul" path="res://segments/segment_13_data.tres" id="25_htxhm"]
 [ext_resource type="Resource" uid="uid://3kgdrgi4ot46" path="res://segments/segment_14_data.tres" id="26_jq2sk"]
 [ext_resource type="Resource" uid="uid://xkqqd6hl1nqk" path="res://segments/segment_15_data.tres" id="27_4k2k6"]
+[ext_resource type="Script" uid="uid://ctsxag2jnufan" path="res://debug/debug_display.gd" id="28_debug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(3248, 47)
@@ -120,7 +121,7 @@ shape = SubResource("RectangleShape2D_lquwl")
 [node name="SegmentManager" type="Node2D" parent="Game"]
 script = ExtResource("6_7mycd")
 segments = Array[ExtResource("7_5vw27")]([ExtResource("8_kek77"), ExtResource("10_2cqfq"), ExtResource("14_getpj"), ExtResource("15_ryguw"), ExtResource("16_d13ii"), ExtResource("17_1u8w0"), ExtResource("18_0odxb"), ExtResource("19_lswn8"), ExtResource("20_a6jrf"), ExtResource("21_xuqvo"), ExtResource("22_qsp4k"), ExtResource("23_kq58d"), ExtResource("24_seu75"), ExtResource("25_htxhm"), ExtResource("26_jq2sk"), ExtResource("27_4k2k6")])
-initial_segments = Array[ExtResource("7_5vw27")]([ExtResource("27_4k2k6")])
+initial_segments = Array[ExtResource("7_5vw27")]([ExtResource("8_kek77"), ExtResource("10_2cqfq"), ExtResource("14_getpj"), ExtResource("15_ryguw")])
 metadata/_edit_lock_ = true
 
 [node name="SunLanceDetectionArea" type="Area2D" parent="Game"]
@@ -175,3 +176,19 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_vivmo")
 theme_override_font_sizes/font_size = 20
 text = "BEST: 123456"
+
+[node name="DebugUI" type="Node" parent="."]
+
+[node name="DebugOverlay" type="CanvasLayer" parent="DebugUI"]
+layer = 100
+
+[node name="DebugDisplay" type="Control" parent="DebugUI/DebugOverlay"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("28_debug")
+segment_manager_path = NodePath("../../../Game/SegmentManager")
