@@ -1,6 +1,8 @@
 extends PlayerState
 
 func enter(_prev: String, _data: Dictionary = {}):
+  player.boost_disabled = false
+  
   player.animation_tree.set("parameters/TimeScale/scale", player.run_animation_speed)
   player.anim_state_machine.travel("RUN")
 

@@ -6,6 +6,7 @@ class_name Player extends CharacterBody2D
 @export var max_fall_speed: float = 600.0
 @export var damping: float = 0.3
 var run_animation_speed: float = 1.0
+var boost_disabled: bool = false
 
 signal dying
 signal died
@@ -31,7 +32,7 @@ func _physics_process(delta: float) -> void:
     if applied_boosters_sfx.is_playing():
       applied_boosters_sfx.stop()
   
-  if Input.is_action_pressed("Boost"):
+  if Input.is_action_pressed("Boost") and not boost_disabled:
     if velocity.y > 0:
       velocity.y *= damping
   

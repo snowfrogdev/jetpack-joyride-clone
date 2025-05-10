@@ -12,6 +12,8 @@ func enter(_prev: String, _data: Dictionary = {}):
   player.set_collision_with_hazards(false)
   # Set horizontal velocity for flinging to the right
   player.velocity.x = fling_speed
+  # Disable boosting when falling/dying
+  player.boost_disabled = true
 
 func exit() -> void:
   # Reset the sliding timer
