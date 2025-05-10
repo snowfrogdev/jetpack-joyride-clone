@@ -8,9 +8,9 @@
 [ext_resource type="Script" uid="uid://ytseulqsrain" path="res://player/states/flying.gd" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://cmfnpvorajmlh" path="res://player/states/falling.gd" id="7_rgyib"]
 [ext_resource type="Script" uid="uid://dalr3pg6go8il" path="res://player/states/dead.gd" id="8_hg6s5"]
-[ext_resource type="AudioStream" uid="uid://c8bogjxny0l61" path="res://assets/sfx/boosters.wav" id="9_hg6s5"]
-[ext_resource type="AudioStream" uid="uid://d2xvbge11eepy" path="res://assets/sfx/applied_boosters.wav" id="10_8t03j"]
-[ext_resource type="AudioStream" uid="uid://dedc042vpda8l" path="res://assets/sfx/footsteps.wav" id="11_2ieo8"]
+[ext_resource type="AudioStream" uid="uid://c8bogjxny0l61" path="res://assets/audio/boosters.wav" id="9_hg6s5"]
+[ext_resource type="AudioStream" uid="uid://d2xvbge11eepy" path="res://assets/audio/applied_boosters.wav" id="10_8t03j"]
+[ext_resource type="AudioStream" uid="uid://dedc042vpda8l" path="res://assets/audio/footsteps.wav" id="11_2ieo8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lquwl"]
 radius = 41.0
@@ -2155,7 +2155,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="ShinR" type="Bone2D" parent="Skeleton2D/Torso/LegR"]
 position = Vector2(-32.8681, -4.19552)
 rotation = -0.304137
-scale = Vector2(0.999868, 0.999868)
+scale = Vector2(0.999867, 0.999867)
 rest = Transform2D(1, 0, 0, 1, -32.8694, -4.19575)
 metadata/_local_pose_override_enabled_ = true
 
@@ -2246,4 +2246,4 @@ stream = ExtResource("10_8t03j")
 [node name="FootstepsSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_2ieo8")
 volume_db = -14.0
-pitch_scale = 1.5
+pitch_scale = 1.4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=42 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://d2qomq7us42pn" path="res://parallax_background.gd" id="2_h2yge"]
@@ -35,6 +35,7 @@
 [ext_resource type="Resource" uid="uid://3kgdrgi4ot46" path="res://segments/segment_14_data.tres" id="26_jq2sk"]
 [ext_resource type="Resource" uid="uid://xkqqd6hl1nqk" path="res://segments/segment_15_data.tres" id="27_4k2k6"]
 [ext_resource type="Script" uid="uid://ctsxag2jnufan" path="res://debug/debug_display.gd" id="28_debug"]
+[ext_resource type="AudioStream" uid="uid://dk4o0n32gb7pn" path="res://assets/audio/Desert Mirage.wav" id="36_ok6jj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(3248, 47)
@@ -121,7 +122,7 @@ shape = SubResource("RectangleShape2D_lquwl")
 [node name="SegmentManager" type="Node2D" parent="Game"]
 script = ExtResource("6_7mycd")
 segments = Array[ExtResource("7_5vw27")]([ExtResource("8_kek77"), ExtResource("10_2cqfq"), ExtResource("14_getpj"), ExtResource("15_ryguw"), ExtResource("16_d13ii"), ExtResource("17_1u8w0"), ExtResource("18_0odxb"), ExtResource("19_lswn8"), ExtResource("20_a6jrf"), ExtResource("21_xuqvo"), ExtResource("22_qsp4k"), ExtResource("23_kq58d"), ExtResource("24_seu75"), ExtResource("25_htxhm"), ExtResource("26_jq2sk"), ExtResource("27_4k2k6")])
-initial_segments = Array[ExtResource("7_5vw27")]([ExtResource("15_ryguw"), ExtResource("10_2cqfq"), ExtResource("14_getpj"), ExtResource("15_ryguw")])
+initial_segments = Array[ExtResource("7_5vw27")]([ExtResource("8_kek77"), ExtResource("10_2cqfq"), ExtResource("14_getpj"), ExtResource("15_ryguw")])
 metadata/_edit_lock_ = true
 
 [node name="SunLanceDetectionArea" type="Area2D" parent="Game"]
@@ -192,3 +193,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("28_debug")
 segment_manager_path = NodePath("../../../Game/SegmentManager")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_ok6jj")
+volume_db = -12.0
+autoplay = true

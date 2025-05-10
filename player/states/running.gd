@@ -14,7 +14,7 @@ func exit() -> void:
   player.dying.disconnect(_on_player_dying)
 
 func physics_update(_delta: float) -> void:
-  player.footstep_sfx.pitch_scale = 1.5 + sin(Time.get_ticks_msec() / 500.0) * 0.1
+  player.footstep_sfx.pitch_scale = 1.4 + sin(Time.get_ticks_msec() / 500.0) * 0.1
 
   if not player.is_on_floor():
     finished.emit(FLYING)
