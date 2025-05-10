@@ -58,8 +58,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
   var current = area
   while current:
     if current.is_in_group("hazard"):
-        dying.emit()
-        break
+      current.play_impact_sfx()
+      dying.emit()
+      break
     current = current.get_parent()
     
 func set_run_animation_speed(speed: float) -> void:
