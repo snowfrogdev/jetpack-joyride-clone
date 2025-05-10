@@ -8,10 +8,12 @@ class_name DebugDisplay
 @export var font_size: int = 16
 
 var segment_manager: SegmentManager
+var game: Game
 var enabled: bool = true
 var debug_panel: PanelContainer
 var debug_vbox: VBoxContainer
 var info_labels = {}
+var game_info_label: Label
 var update_timer: float = 0
 var update_interval: float = 0.1 # Update display every 0.1 seconds to reduce flickering
 
@@ -23,8 +25,16 @@ func _ready() -> void:
       # Try to find segment manager automatically
       segment_manager = find_segment_manager()
     
+    # Try to find the game node
+    game = find_game_node()
+    
     if not segment_manager:
       printerr("DebugDisplay: SegmentManager not found!")
+      
+    if not game:
+      printerr("DebugDisplay: Game node not found!")
+    else:
+      print("DebugDisplay: Game node found successfully")
     
     # Create persistent UI elements
     _setup_debug_ui()
@@ -48,6 +58,18 @@ func _setup_debug_ui() -> void:
   debug_vbox = VBoxContainer.new()
   debug_vbox.add_theme_constant_override("separation", 0)
   debug_panel.add_child(debug_vbox)
+  
+  # Add game info label for displaying game stats like difficulty
+  game_info_label = Label.new()
+  game_info_label.text = "Game Difficulty: --" # Default text
+  game_info_label.add_theme_color_override("font_color", Color.YELLOW) # Make difficulty stand out
+  game_info_label.add_theme_font_size_override("font_size", font_size)
+  debug_vbox.add_child(game_info_label)
+  
+  # Add separator
+  var separator = HSeparator.new()
+  separator.add_theme_constant_override("separation", 4)
+  debug_vbox.add_child(separator)
   
   # Add title label
   var title_label = Label.new()
@@ -80,6 +102,10 @@ func _process(delta: float) -> void:
     debug_panel.position = Vector2(margin.x, viewport_size.y - debug_panel.size.y - margin.y)
 
 func _update_debug_info() -> void:
+  # Update game info first
+  if game and game_info_label:
+    game_info_label.text = "Game Difficulty: %.2f" % game.current_difficulty
+  
   if not segment_manager or not debug_vbox:
     return
     
@@ -136,6 +162,41 @@ func _find_node_by_class_recursive(node: Node, cls_name: String) -> Node:
   
   for child in node.get_children():
     var found = _find_node_by_class_recursive(child, cls_name)
+    if found:
+      return found
+      
+  return null
+
+# Try to find game node in the scene
+func find_game_node() -> Game:
+  # Try to find by group first (most reliable)
+  var game_nodes = get_tree().get_nodes_in_group("game")
+  if game_nodes.size() > 0:
+    return game_nodes[0] as Game
+    
+  # Try to find by direct parent next
+  var parent = get_parent()
+  while parent:
+    if parent is Game:
+      return parent
+    parent = parent.get_parent()
+  
+  # Last attempt - find any Game node in the scene tree
+  var root = get_tree().root
+  if root:
+    var game_node = _find_game_recursive(root)
+    if game_node:
+      return game_node
+  
+  return null
+
+# Recursively search for a Game node
+func _find_game_recursive(node: Node) -> Game:
+  if node is Game:
+    return node
+  
+  for child in node.get_children():
+    var found = _find_game_recursive(child)
     if found:
       return found
       
