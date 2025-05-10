@@ -13,6 +13,9 @@ signal died
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var boosters_sfx: AudioStreamPlayer = $BoostersSfx
+@onready var applied_boosters_sfx: AudioStreamPlayer = $AppliedBoostersSfx
+@onready var footstep_sfx: AudioStreamPlayer = $FootstepsSfx
 var anim_state_machine: AnimationNodeStateMachinePlayback
 var ignore_hazards: bool = false
 
@@ -23,6 +26,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
   if not is_on_floor():
     velocity.y += gravity * delta
+
+  if not Input.is_action_just_pressed("Boost"):
+    if applied_boosters_sfx.is_playing():
+      applied_boosters_sfx.stop()
   
   if Input.is_action_pressed("Boost"):
     if velocity.y > 0:
@@ -30,6 +37,11 @@ func _physics_process(delta: float) -> void:
   
     velocity.y -= boost_force * delta
     velocity.y = max(velocity.y, -max_ascend_speed)
+
+    if not applied_boosters_sfx.is_playing():
+      applied_boosters_sfx.pitch_scale = randf_range(1.2, 1.5)
+      applied_boosters_sfx.play()
+
   elif velocity.y < 0:
     velocity.y *= damping
 

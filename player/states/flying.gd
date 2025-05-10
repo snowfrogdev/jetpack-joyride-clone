@@ -24,6 +24,8 @@ func enter(_prev: String, _data: Dictionary = {}):
   left_foot_particles.visible = true
   right_foot_particles.visible = true
 
+  player.boosters_sfx.play()
+
 func physics_update(_delta: float) -> void:
   if player.is_on_floor():
     finished.emit(RUNNING)
@@ -32,6 +34,8 @@ func exit() -> void:
   # Stop emitting particles
   left_foot_particles.emitting = false
   right_foot_particles.emitting = false
+
+  player.boosters_sfx.stop()
 
   player.dying.disconnect(_on_player_dying)
 
