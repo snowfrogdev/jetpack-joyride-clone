@@ -24,10 +24,9 @@ func physics_update(delta: float) -> void:
     sun_lance_attack.projectile.position.x -= sun_lance_attack.projectile_speed * delta
 
 func _on_player_collision() -> void:
-  # Play impact visual effect
-  # You could add animation or particles here if needed
-  print("Sun lance hit player!")
-  
   # free the sun lance attack after a certain time or once the animation is done
   if is_instance_valid(sun_lance_attack):
-    sun_lance_attack.queue_free()
+    # make the sunlance attack invisible and prevent it from colliding with the player
+    sun_lance_attack.projectile.visible = false
+    sun_lance_attack.projectile.set_collision_mask(0)
+    sun_lance_attack.projectile.set_collision_layer(0)

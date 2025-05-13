@@ -10,7 +10,6 @@ func _ready() -> void:
 func _on_body_entered(body) -> void:
   if body.is_in_group("player"):
     player_collision.emit()
-    play_impact_sfx()
-
-func play_impact_sfx() -> void:
-  sfx.play()
+    sfx.play()
+    if body.has_method("zap_player"):
+      body.zap_player()
