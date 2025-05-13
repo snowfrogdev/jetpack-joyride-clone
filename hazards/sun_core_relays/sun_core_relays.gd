@@ -8,11 +8,14 @@ class_name SunCoreRelays extends Node2D
 @onready var beam_path := $Beam
 @onready var beam_collider := $Collider
 @onready var beam_collision_shape := $Collider/CollisionShape2D
+@onready var sfx: AudioStreamPlayer = $ImpactSfx
 
 func _ready():
   # Duplicate the shape so it’s unique to this instance
   if beam_collision_shape.shape:
       beam_collision_shape.shape = beam_collision_shape.shape.duplicate()
+  
+  beam_collider.body_entered.connect(_on_body_entered)
 
 func _process(_delta):
   if Engine.is_editor_hint():
@@ -104,3 +107,7 @@ func update_node_rotations():
   # Rotate end node to face toward the start node (opposite direction)
   # The PI/2 offset is to account for the original sprite orientation
   end_node.rotation = beam_direction.angle() + PI / 2
+
+func _on_body_entered(body) -> void:
+  if body.is_in_group("player"):
+    sfx.play()

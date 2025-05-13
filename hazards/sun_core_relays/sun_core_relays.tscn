@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bofack50w2ncn"]
+[gd_scene load_steps=12 format=3 uid="uid://bofack50w2ncn"]
 
 [ext_resource type="Script" uid="uid://bbshymeemmvwh" path="res://hazards/sun_core_relays/sun_core_relays.gd" id="1_pcxc2"]
 [ext_resource type="Texture2D" uid="uid://bgxaicew036cs" path="res://assets/suncore_relay.png" id="2_4tqej"]
 [ext_resource type="Shader" uid="uid://dhjauhskmx7c0" path="res://hazards/sun_core_relays/sun_core_beam.gdshader" id="2_h3245"]
 [ext_resource type="Shader" uid="uid://cigbbue3j7u24" path="res://hazards/sun_core_relays/sun_core_relays.gdshader" id="3_vgy54"]
 [ext_resource type="AudioStream" uid="uid://buknkb8pt1yhi" path="res://assets/audio/sun_core_relays.wav" id="5_bac2j"]
+[ext_resource type="AudioStream" uid="uid://bm5vn7oe7pxa2" path="res://assets/audio/sun_core_relays_impact.wav" id="6_txov4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h3245"]
 shader = ExtResource("2_h3245")
@@ -114,3 +115,7 @@ metadata/_edit_lock_ = true
 stream = ExtResource("5_bac2j")
 autoplay = true
 max_distance = 1500.0
+
+[node name="ImpactSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_txov4")
+pitch_scale = 1.54
