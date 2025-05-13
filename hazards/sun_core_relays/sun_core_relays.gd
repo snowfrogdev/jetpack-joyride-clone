@@ -11,7 +11,7 @@ class_name SunCoreRelays extends Node2D
 @onready var sfx: AudioStreamPlayer = $ImpactSfx
 
 func _ready():
-  # Duplicate the shape so it’s unique to this instance
+  # Duplicate the shape so it's unique to this instance
   if beam_collision_shape.shape:
       beam_collision_shape.shape = beam_collision_shape.shape.duplicate()
   
@@ -111,3 +111,5 @@ func update_node_rotations():
 func _on_body_entered(body) -> void:
   if body.is_in_group("player"):
     sfx.play()
+    if body.has_method("zap_player"):
+      body.zap_player()

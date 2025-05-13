@@ -68,3 +68,16 @@ func set_run_animation_speed(speed: float) -> void:
 func set_collision_with_hazards(enabled: bool) -> void:
   # When enabled is false, we ignore hazards
   ignore_hazards = !enabled
+
+# Make the player's ZapAnimation visible for 1 second when hit by sun_core_relay
+func zap_player() -> void:
+  # Create a series of white flashes for a more dramatic zap effect
+  var tween = create_tween().set_trans(Tween.TRANS_SINE)
+  
+  # Flash bright white several times to create a pulsing electricity effect
+  tween.tween_property(self, "modulate", Color(3.0, 3.0, 3.0, 1.0), 0.05)
+  tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.05)
+  tween.tween_property(self, "modulate", Color(3.0, 3.0, 3.0, 1.0), 0.05)
+  tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.05)
+  tween.tween_property(self, "modulate", Color(3.0, 3.0, 3.0, 1.0), 0.05)
+  tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.15)
