@@ -1,7 +1,8 @@
 extends SunLanceState
 
 func enter(_previous_state_path: String, _data := {}) -> void:
-  print("Entering Warning state")
+  if OS.has_feature("debug"):
+    print("Entering Warning state")
   sun_lance_attack.warning.position.y = sun_lance_attack.player.position.y
   sun_lance_attack.tracking_warning_sprite.visible = true
   sun_lance_attack.locked_warning_sprite.visible = false

@@ -34,7 +34,8 @@ func _ready() -> void:
     if not game:
       printerr("DebugDisplay: Game node not found!")
     else:
-      print("DebugDisplay: Game node found successfully")
+      if OS.has_feature("debug"):
+        print("DebugDisplay: Game node found successfully")
     
     # Create persistent UI elements
     _setup_debug_ui()

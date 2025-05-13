@@ -35,7 +35,8 @@ func _ready():
 	# Apply specific font sizes to different UI elements
 	customize_ui_elements(font)
 	
-	print("ElMessiri font applied to all UI elements")
+	if OS.has_feature("debug"):
+		print("ElMessiri font applied to all UI elements")
 
 # Recursively apply the theme to all UI elements
 func apply_theme_to_ui(theme: Theme):

@@ -25,7 +25,7 @@ func _ready():
   var game = get_parent()
   if game is Game:
     game.difficulty_changed.connect(_on_difficulty_changed)
-    if debug_mode:
+    if OS.has_feature("debug"):
       print("SegmentManager connected to Game difficulty signal")
 
 func _process(delta: float):
@@ -145,5 +145,5 @@ func get_segment_resource_name(index: int) -> String:
 
 func _on_difficulty_changed(new_difficulty: float):
   current_difficulty = new_difficulty
-  if debug_mode:
+  if OS.has_feature("debug"):
     print("SegmentManager difficulty updated to: ", current_difficulty)

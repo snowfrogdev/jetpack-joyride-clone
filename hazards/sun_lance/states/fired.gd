@@ -1,7 +1,8 @@
 extends SunLanceState
 
 func enter(_previous_state_path: String, _data: Dictionary = {}) -> void:
-  print("Entering Fired state")
+  if OS.has_feature("debug"):
+    print("Entering Fired state")
   
   # Connect to the projectile's player_collision signal
   sun_lance_attack.projectile.player_collision.connect(_on_player_collision)

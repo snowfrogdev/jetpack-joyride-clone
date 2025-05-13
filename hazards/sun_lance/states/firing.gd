@@ -1,7 +1,8 @@
 extends SunLanceState
 
 func enter(_previous_state_path: String, _data: Dictionary = {}) -> void:
-    print("Entering Firing state")
+    if OS.has_feature("debug"):
+        print("Entering Firing state")
     sun_lance_attack.tracking_warning_sprite.visible = false
     sun_lance_attack.locked_warning_sprite.visible = true
     
