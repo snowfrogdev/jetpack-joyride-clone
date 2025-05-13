@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=45 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://d2qomq7us42pn" path="res://parallax_background.gd" id="2_h2yge"]
@@ -35,6 +35,7 @@
 [ext_resource type="Resource" uid="uid://3kgdrgi4ot46" path="res://segments/segment_14_data.tres" id="26_jq2sk"]
 [ext_resource type="Resource" uid="uid://xkqqd6hl1nqk" path="res://segments/segment_15_data.tres" id="27_4k2k6"]
 [ext_resource type="Script" uid="uid://ctsxag2jnufan" path="res://debug/debug_display.gd" id="28_debug"]
+[ext_resource type="Script" uid="uid://dira3l5mqiqva" path="res://ui_theme.gd" id="29_theme"]
 [ext_resource type="AudioStream" uid="uid://dk4o0n32gb7pn" path="res://assets/audio/Desert Mirage.wav" id="36_ok6jj"]
 [ext_resource type="AudioStream" uid="uid://ctc8dxuvc6yal" path="res://assets/audio/intro.wav" id="37_ctc8d"]
 [ext_resource type="AudioStream" uid="uid://dn6jhxjoq087g" path="res://assets/audio/game_over.wav" id="38_b1qrp"]
@@ -159,6 +160,9 @@ metadata/_custom_type_script = "uid://cue7hc33wov63"
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="UITheme" type="Node" parent="UI"]
+script = ExtResource("29_theme")
+
 [node name="DistanceContainer" type="VBoxContainer" parent="UI"]
 offset_left = 7.0
 offset_right = 133.0
@@ -188,14 +192,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -100.0
-offset_right = 200.0
-offset_bottom = -40.0
+offset_left = -250.0
+offset_top = -120.0
+offset_right = 250.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 64
 text = "Desert Joyride"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -24,12 +24,12 @@ func physics_update(delta: float) -> void:
   if is_sliding:
     # Handle sliding state
     sliding_timer += delta
+    # Gradually reduce horizontal velocity during slide
+    player.velocity.x = max(player.velocity.x * 0.99, 0)
     if sliding_timer >= SLIDE_DURATION:
-      # Transition to running state after sliding duration
+      player.velocity.x = 0 # Stop sliding after duration
       finished.emit(DEAD)
   elif player.is_on_floor():
     # Start sliding when player hits the floor
     player.anim_state_machine.travel("SLIDE")
     is_sliding = true
-    # Gradually reduce horizontal velocity during slide
-    player.velocity.x = max(player.velocity.x * 0.98, 0)
