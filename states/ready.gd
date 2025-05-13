@@ -10,7 +10,8 @@ func enter(_prev: String, _data: Dictionary = {}) -> void:
   game.load_best_distance()
   get_tree().paused = true
   
-  # Show the boost prompt label
+  # Show the game title and boost prompt labels
+  get_node("/root/Main/UI/GameTitleLabel").visible = true
   get_node("/root/Main/UI/BoostPromptLabel").visible = true
   
   # Stop game music if it's playing and play intro music
@@ -22,7 +23,8 @@ func update(_delta) -> void:
     if OS.has_feature("debug"):
       print("Exiting Ready state")
     
-    # Hide the boost prompt label
+    # Hide the game title and boost prompt labels
+    get_node("/root/Main/UI/GameTitleLabel").visible = false
     get_node("/root/Main/UI/BoostPromptLabel").visible = false
     
     emit_signal("finished", "Running")
