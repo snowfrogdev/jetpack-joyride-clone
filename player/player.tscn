@@ -1951,7 +1951,7 @@ nodes/TimeScale/position = Vector2(600, 160)
 nodes/output/position = Vector2(900, 220)
 node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.465059, 0.465059)
 script = ExtResource("1_onrkg")
 gravity = 900.0
@@ -2247,3 +2247,6 @@ stream = ExtResource("10_8t03j")
 stream = ExtResource("11_2ieo8")
 volume_db = -14.0
 pitch_scale = 1.4
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

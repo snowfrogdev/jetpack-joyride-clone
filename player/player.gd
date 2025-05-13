@@ -58,7 +58,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
   var current = area
   while current:
     if current.is_in_group("hazard"):
-      current.play_impact_sfx()
       dying.emit()
       break
     current = current.get_parent()

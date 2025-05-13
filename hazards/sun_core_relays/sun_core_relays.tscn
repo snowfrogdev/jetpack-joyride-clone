@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bofack50w2ncn"]
+[gd_scene load_steps=11 format=3 uid="uid://bofack50w2ncn"]
 
 [ext_resource type="Script" uid="uid://bbshymeemmvwh" path="res://hazards/sun_core_relays/sun_core_relays.gd" id="1_pcxc2"]
 [ext_resource type="Texture2D" uid="uid://bgxaicew036cs" path="res://assets/suncore_relay.png" id="2_4tqej"]
 [ext_resource type="Shader" uid="uid://dhjauhskmx7c0" path="res://hazards/sun_core_relays/sun_core_beam.gdshader" id="2_h3245"]
 [ext_resource type="Shader" uid="uid://cigbbue3j7u24" path="res://hazards/sun_core_relays/sun_core_relays.gdshader" id="3_vgy54"]
+[ext_resource type="AudioStream" uid="uid://buknkb8pt1yhi" path="res://assets/audio/sun_core_relays.wav" id="5_bac2j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h3245"]
 shader = ExtResource("2_h3245")
@@ -48,7 +49,7 @@ shader_parameter/noise_scale = Vector2(1, 1)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_me3o8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4faw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txov4"]
 size = Vector2(290, 24)
 
 [node name="SunCoreRelays" type="Node2D" groups=["hazard"]]
@@ -106,5 +107,10 @@ collision_layer = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" groups=["hazard"]]
-shape = SubResource("RectangleShape2D_r4faw")
+shape = SubResource("RectangleShape2D_txov4")
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_bac2j")
+autoplay = true
+max_distance = 1500.0
