@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://crti1kafjjwkt"]
+[gd_scene load_steps=44 format=3 uid="uid://crti1kafjjwkt"]
 
 [ext_resource type="Script" uid="uid://c68wmer36acdu" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://d2qomq7us42pn" path="res://parallax_background.gd" id="2_h2yge"]
@@ -37,6 +37,7 @@
 [ext_resource type="Script" uid="uid://ctsxag2jnufan" path="res://debug/debug_display.gd" id="28_debug"]
 [ext_resource type="AudioStream" uid="uid://dk4o0n32gb7pn" path="res://assets/audio/Desert Mirage.wav" id="36_ok6jj"]
 [ext_resource type="AudioStream" uid="uid://ctc8dxuvc6yal" path="res://assets/audio/intro.wav" id="37_ctc8d"]
+[ext_resource type="AudioStream" uid="uid://dn6jhxjoq087g" path="res://assets/audio/game_over.wav" id="38_b1qrp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(3248, 47)
@@ -219,6 +220,26 @@ text = "Space or Left Click to boost"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RestartPromptLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 50.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Space or Left Click to restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DebugUI" type="Node" parent="."]
 
 [node name="DebugOverlay" type="CanvasLayer" parent="DebugUI"]
@@ -242,3 +263,6 @@ volume_db = -12.0
 [node name="IntroMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("37_ctc8d")
 volume_db = -12.0
+
+[node name="GameOverJingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("38_b1qrp")
