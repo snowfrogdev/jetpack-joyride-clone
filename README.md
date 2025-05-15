@@ -20,9 +20,15 @@ This project is a clone of the classic **Jetpack Joyride** game, created as part
 
 - [] Compose and integrate background music to enhance the experience.
 
-## Time Investment
+## Post-Mortem
 
-TBD
+I've invested about 80 hours into this project, while I had budgeted 75 hours. I spent a lot of time learning about Godot's skeleton rigging with mesh deformation along with the animation system. 
+
+It became very clear early on that I would not be able to stay within the time budget and produce after decent art and audio assets so I decided to lean into AI generation. Every piece of art, sound effect and music in this project was generated using AI. I used [Sora](https://openai.com/sora/) for the character, hazards and some of the background. I used [Krita AI Diffusion](https://kritaaidiffusion.com/) for most of the background layers. For sound effects I used [OptimizerAI](https://www.optimizerai.xyz/) and for the music I used [Suno](https://suno.com/).
+
+Using these tools to generate assets was a hard and tedious process. I did get a bit better at prompting the AI to get ~~the~~ kinda sorta close to what I wanted. But I still had to do a fair amount of editing to get the assets to work in the game. In the end I am convinced that a talented artis could have produced better assets in a fraction of the time it took me to generate and edit them. One side effect of using AI generation, from different sources, is that the art style tends to be inconsistent and lack cohesion.
+
+My take away is that my time is probably better spent learning to create art and audio assets than trying to git gewd at prompt engineering. Even if the tools get better, people with good art fundamentals will be in a better position to use them effectively. I think the same is true for audio generation.
 
 ## How to Run
 
